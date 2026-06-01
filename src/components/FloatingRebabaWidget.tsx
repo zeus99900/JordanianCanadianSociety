@@ -5,14 +5,14 @@ import { motion, Variants } from 'framer-motion';
 import './floating-rebaba.css';
 
 export default function FloatingRebabaWidget() {
-  // Animation for the bow rocking/sliding back and forth
+  // Animation for the bow sliding horizontally back and forth
   const bowVariants: Variants = {
     animate: {
-      rotate: [-15, 10, -15],  // Tilts the bow as it moves
-      x: [-15, 20, -15],       // Slides the bow across the string
-      y: [0, -5, 0],           // Slight natural vertical movement
+      x: [-30, 30, -30],       // Slides the bow left and right across the string
+      y: [0, 0, 0],            // Keep it perfectly horizontal
+      rotate: [0, 0, 0],
       transition: {
-        duration: 4,           // Speed of the bowing stroke (slower)
+        duration: 4,           // Speed of the bowing stroke
         ease: "easeInOut",
         repeat: Infinity,
       }
@@ -125,15 +125,14 @@ export default function FloatingRebabaWidget() {
             animate="animate"
           />
 
-          {/* ===== THE ANIMATED BOW ===== */}
+          {/* ===== THE ANIMATED BOW (Horizontal) ===== */}
           <motion.g
             variants={bowVariants}
             animate="animate"
-            style={{ originX: "80px", originY: "190px" }}
           >
-            {/* The Bow Wood (Curved strongly) */}
+            {/* The Bow Wood (Curved down) */}
             <path
-              d="M30 160 C 80 180, 140 220, 100 270"
+              d="M10 200 C 50 240, 110 240, 150 200"
               stroke="#a37b3b"
               strokeWidth="4"
               strokeLinecap="round"
@@ -141,10 +140,10 @@ export default function FloatingRebabaWidget() {
             />
             {/* The Horsehair String */}
             <line
-              x1="30"
-              y1="160"
-              x2="100"
-              y2="270"
+              x1="10"
+              y1="200"
+              x2="150"
+              y2="200"
               stroke="#f4e8c1"
               strokeWidth="2.5"
               strokeLinecap="round"
