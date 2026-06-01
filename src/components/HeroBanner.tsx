@@ -3,7 +3,10 @@ import './hero-banner.css';
 
 export default function HeroBanner() {
   return (
-    <section className="hero gradient-heritage pattern-bg" id="hero-section">
+    <section className="hero gradient-heritage" id="hero-section">
+      <div className="hero-flag-triangle">
+        <img src="/images/jordan-star.svg" alt="" className="hero-flag-star animate-scale-in" />
+      </div>
       <div className="hero-overlay" />
       <div className="container hero-content">
         <div className="hero-badge animate-fade-in">

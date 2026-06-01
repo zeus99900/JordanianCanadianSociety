@@ -23,6 +23,38 @@
   z-index: 1;
 }
 
+/* Flag Triangle */
+.hero-flag-triangle {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 45%;
+  max-width: 800px;
+  background-color: var(--color-crimson);
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 8%;
+  opacity: 0.95;
+  box-shadow: 20px 0 50px rgba(0,0,0,0.5); /* Adds depth */
+}
+
+.hero-flag-star {
+  width: clamp(80px, 15vw, 150px);
+  height: clamp(80px, 15vw, 150px);
+  filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
+}
+
+@media (max-width: 767px) {
+  .hero-flag-triangle {
+    width: 80%;
+    padding-left: 10%;
+  }
+}
+
 .hero-content {
   position: relative;
   z-index: 2;
