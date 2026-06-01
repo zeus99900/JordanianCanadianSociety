@@ -1,0 +1,236 @@
+/* About Page Styles */
+
+/* Hero */
+.about-hero {
+  padding: var(--space-5xl) 0 var(--space-3xl);
+  text-align: center;
+}
+
+.about-hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.about-hero-arabic {
+  font-size: var(--text-2xl);
+  color: var(--color-gold);
+  opacity: 0.7;
+}
+
+.about-hero-title {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  color: var(--color-white);
+  font-weight: var(--font-extrabold);
+}
+
+.about-hero-subtitle {
+  font-size: var(--text-lg);
+  color: var(--color-gray-300);
+  max-width: 500px;
+  text-wrap: balance;
+}
+
+/* Mission */
+.mission-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3xl);
+}
+
+@media (min-width: 768px) {
+  .mission-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.mission-arabic {
+  font-size: var(--text-xl);
+  color: var(--color-gold-dark);
+  opacity: 0.7;
+  margin-bottom: var(--space-sm);
+}
+
+.mission-text {
+  font-size: var(--text-lg);
+  color: var(--color-gray-600);
+  line-height: var(--leading-relaxed);
+  margin-top: var(--space-md);
+}
+
+.mission-values {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+.value-card {
+  padding: var(--space-lg);
+  background: var(--color-cream);
+  border-radius: var(--radius-md);
+  text-align: center;
+  opacity: 0;
+}
+
+.value-icon {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: var(--space-sm);
+}
+
+.value-card h3 {
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  margin-bottom: var(--space-xs);
+}
+
+.value-card p {
+  font-size: var(--text-sm);
+  color: var(--color-gray-600);
+  line-height: var(--leading-relaxed);
+}
+
+/* Timeline */
+.timeline-section {
+  background: var(--color-cream);
+}
+
+.timeline-arabic {
+  font-size: var(--text-xl);
+  color: var(--color-gold-dark);
+  opacity: 0.7;
+  margin-bottom: var(--space-sm);
+}
+
+.timeline {
+  position: relative;
+  max-width: 700px;
+  margin: 0 auto;
+  padding-left: 40px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    180deg,
+    var(--color-crimson),
+    var(--color-gold),
+    var(--color-olive)
+  );
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: var(--space-2xl);
+  opacity: 0;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -33px;
+  top: 24px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--color-crimson);
+  border: 3px solid var(--color-white);
+  box-shadow: var(--shadow-sm);
+  z-index: 1;
+}
+
+.timeline-item:nth-child(2) .timeline-dot {
+  background: var(--color-gold);
+}
+
+.timeline-item:nth-child(3) .timeline-dot {
+  background: var(--color-olive);
+}
+
+.timeline-year {
+  display: inline-block;
+  padding: 2px 12px;
+  background: var(--color-crimson);
+  color: var(--color-white);
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-sm);
+}
+
+.timeline-item:nth-child(2) .timeline-year {
+  background: var(--color-gold-dark);
+}
+
+.timeline-item:nth-child(3) .timeline-year {
+  background: var(--color-olive);
+}
+
+.timeline-content h3 {
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-sm);
+}
+
+.timeline-content p {
+  font-size: var(--text-base);
+  color: var(--color-gray-600);
+  line-height: var(--leading-relaxed);
+}
+
+/* Contact */
+.contact-section {
+  background: var(--color-white);
+}
+
+.contact-arabic {
+  font-size: var(--text-xl);
+  color: var(--color-gold-dark);
+  opacity: 0.7;
+  margin-bottom: var(--space-sm);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+@media (min-width: 640px) {
+  .contact-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.contact-card {
+  text-align: center;
+}
+
+.contact-card .card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.contact-icon {
+  font-size: 2rem;
+}
+
+.contact-card h3 {
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+}
+
+.contact-card p {
+  font-size: var(--text-sm);
+  color: var(--color-gray-600);
+}

@@ -1,0 +1,28 @@
+.stripe-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.stripe-card-wrapper {
+  padding: var(--space-lg);
+  border: 2px solid var(--color-gray-200);
+  border-radius: var(--radius-md);
+  background: var(--color-white);
+  transition: border-color var(--transition-fast);
+}
+
+.stripe-card-wrapper:focus-within {
+  border-color: var(--color-crimson);
+  box-shadow: 0 0 0 3px rgba(178, 34, 52, 0.1);
+}
+
+.stripe-submit {
+  width: 100%;
+}
+
+.stripe-secure-note {
+  text-align: center;
+  font-size: var(--text-xs);
+  color: var(--color-gray-400);
+}

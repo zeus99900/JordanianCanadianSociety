@@ -1,0 +1,219 @@
+.registration-form {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-2xl);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--color-gray-100);
+}
+
+.reg-form-title {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-extrabold);
+  color: var(--color-black);
+}
+
+.reg-form-subtitle {
+  font-size: var(--text-base);
+  color: var(--color-gray-500);
+  margin-top: var(--space-xs);
+}
+
+/* Sections */
+.reg-section {
+  margin-top: var(--space-xl);
+}
+
+.reg-section-title {
+  font-size: var(--text-lg);
+  font-weight: var(--font-semibold);
+  color: var(--color-black);
+  margin-bottom: var(--space-md);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.reg-section-title::before {
+  content: '';
+  width: 4px;
+  height: 20px;
+  background: linear-gradient(180deg, var(--color-crimson), var(--color-gold));
+  border-radius: 2px;
+}
+
+/* Fields */
+.reg-fields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* Ticket List */
+.ticket-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+/* Total */
+.reg-total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-lg);
+  margin-top: var(--space-md);
+  background: linear-gradient(135deg, var(--color-cream), var(--color-white));
+  border-radius: var(--radius-md);
+  border: 2px solid var(--color-gold);
+}
+
+.total-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: var(--text-sm);
+  color: var(--color-gray-600);
+}
+
+.total-breakdown > span:first-child {
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  color: var(--color-black);
+}
+
+.total-detail {
+  font-size: var(--text-xs);
+  color: var(--color-gray-400);
+}
+
+.total-amount {
+  font-size: var(--text-3xl);
+  font-weight: var(--font-extrabold);
+  color: var(--color-crimson);
+  line-height: 1;
+}
+
+/* Payment Methods */
+.payment-methods {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.payment-option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-md) var(--space-lg);
+  border: 2px solid var(--color-gray-200);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.payment-option:hover {
+  border-color: var(--color-gray-300);
+  background: var(--color-gray-50);
+}
+
+.payment-option.selected {
+  border-color: var(--color-crimson);
+  background: rgba(178, 34, 52, 0.04);
+}
+
+.payment-option input[type="radio"] {
+  display: none;
+}
+
+.payment-option-icon {
+  font-size: var(--text-2xl);
+  flex-shrink: 0;
+}
+
+.payment-option-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.payment-option-label {
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  color: var(--color-black);
+}
+
+.payment-option-desc {
+  font-size: var(--text-sm);
+  color: var(--color-gray-500);
+}
+
+/* E-Transfer Box */
+.etransfer-instructions {
+  margin-top: var(--space-md);
+}
+
+.etransfer-box {
+  padding: var(--space-lg);
+  background: linear-gradient(135deg, #FFF7ED, #FFFBF2);
+  border: 1px solid #FDE68A;
+  border-radius: var(--radius-md);
+}
+
+.etransfer-box h4 {
+  font-size: var(--text-base);
+  margin-bottom: var(--space-sm);
+}
+
+.etransfer-email {
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  color: var(--color-crimson);
+  padding: var(--space-sm) var(--space-md);
+  background: var(--color-white);
+  border-radius: var(--radius-sm);
+  margin: var(--space-sm) 0;
+  display: inline-block;
+  user-select: all;
+}
+
+.etransfer-note {
+  font-size: var(--text-sm);
+  color: var(--color-gray-600);
+  margin-top: var(--space-sm);
+  line-height: var(--leading-relaxed);
+}
+
+/* Error */
+.reg-error {
+  padding: var(--space-md) var(--space-lg);
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: var(--radius-md);
+  color: var(--color-error-dark);
+  font-size: var(--text-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
+
+/* Submit */
+.reg-submit {
+  width: 100%;
+  margin-top: var(--space-xl);
+  font-size: var(--text-lg) !important;
+  padding: 1.1rem 2rem !important;
+}
+
+/* Responsive */
+@media (min-width: 640px) {
+  .payment-methods {
+    flex-direction: row;
+  }
+
+  .payment-option {
+    flex: 1;
+    flex-direction: column;
+    text-align: center;
+    padding: var(--space-lg);
+  }
+}

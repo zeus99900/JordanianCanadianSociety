@@ -1,0 +1,121 @@
+.ticket-counter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-md) var(--space-lg);
+  background: var(--color-gray-50);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-gray-200);
+  transition: border-color var(--transition-fast);
+}
+
+.ticket-counter:hover {
+  border-color: var(--color-gray-300);
+}
+
+.ticket-info {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.ticket-emoji {
+  font-size: var(--text-2xl);
+  flex-shrink: 0;
+}
+
+.ticket-labels {
+  display: flex;
+  flex-direction: column;
+}
+
+.ticket-label {
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  color: var(--color-black);
+}
+
+.ticket-price {
+  font-size: var(--text-sm);
+  color: var(--color-gray-500);
+}
+
+/* Controls */
+.ticket-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.ticket-btn {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  border-radius: var(--radius-full);
+  border: 2px solid var(--color-gray-300);
+  color: var(--color-black);
+  background: var(--color-white);
+  transition: all var(--transition-fast);
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.ticket-btn:hover:not(:disabled) {
+  border-color: var(--color-crimson);
+  color: var(--color-crimson);
+  box-shadow: var(--shadow-sm);
+}
+
+.ticket-btn:active:not(:disabled) {
+  scale: 0.9;
+  background: var(--color-crimson);
+  border-color: var(--color-crimson);
+  color: var(--color-white);
+}
+
+.ticket-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.ticket-btn-inc:hover:not(:disabled) {
+  border-color: var(--color-olive);
+  color: var(--color-olive);
+}
+
+.ticket-btn-inc:active:not(:disabled) {
+  background: var(--color-olive);
+  border-color: var(--color-olive);
+  color: var(--color-white);
+}
+
+.ticket-count {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-extrabold);
+  color: var(--color-black);
+  min-width: 40px;
+  text-align: center;
+  line-height: 1;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .ticket-counter {
+    padding: var(--space-md);
+  }
+
+  .ticket-btn {
+    width: 44px;
+    height: 44px;
+    font-size: var(--text-xl);
+  }
+
+  .ticket-count {
+    font-size: var(--text-xl);
+    min-width: 32px;
+  }
+}

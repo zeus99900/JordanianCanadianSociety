@@ -1,0 +1,167 @@
+/* Admin Door Styles — Dark theme optimized for venue use */
+
+/* Login Gate */
+.admin-login {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-gray-900);
+  padding: var(--space-xl);
+}
+
+.admin-login-card {
+  width: 100%;
+  max-width: 400px;
+  background: var(--color-gray-800);
+  border-radius: var(--radius-xl);
+  padding: var(--space-2xl);
+  box-shadow: var(--shadow-xl);
+  border: 1px solid var(--color-gray-700);
+}
+
+.admin-login-header {
+  text-align: center;
+  margin-bottom: var(--space-xl);
+  color: var(--color-white);
+}
+
+.admin-login-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: var(--space-md);
+}
+
+.admin-login-header h1 {
+  font-size: var(--text-2xl);
+  margin-bottom: var(--space-sm);
+}
+
+.admin-login-header p {
+  font-size: var(--text-sm);
+  color: var(--color-gray-400);
+}
+
+.admin-login-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.admin-password-input {
+  background: var(--color-gray-900) !important;
+  border-color: var(--color-gray-600) !important;
+  color: var(--color-white) !important;
+  text-align: center;
+  font-size: var(--text-xl) !important;
+  padding: var(--space-lg) !important;
+  letter-spacing: 0.1em;
+}
+
+.admin-password-input:focus {
+  border-color: var(--color-gold) !important;
+  box-shadow: 0 0 0 3px rgba(200, 169, 81, 0.2) !important;
+}
+
+/* Admin Door Layout */
+.admin-door {
+  min-height: 100dvh;
+  background: var(--color-gray-900);
+  color: var(--color-white);
+  padding-bottom: var(--space-2xl);
+}
+
+/* Header */
+.admin-header {
+  padding: var(--space-md);
+  background: var(--color-gray-800);
+  border-bottom: 1px solid var(--color-gray-700);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.admin-header-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.admin-title {
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+}
+
+.admin-logout {
+  background: var(--color-gray-700) !important;
+  color: var(--color-gray-300) !important;
+  border: 1px solid var(--color-gray-600) !important;
+}
+
+.admin-event-select {
+  background: var(--color-gray-900) !important;
+  border-color: var(--color-gray-600) !important;
+  color: var(--color-white) !important;
+  padding: var(--space-sm) var(--space-md) !important;
+}
+
+/* Tabs */
+.admin-tabs {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.admin-tab {
+  flex: 1;
+  padding: var(--space-sm) var(--space-md);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--color-gray-400);
+  background: var(--color-gray-900);
+  border: 1px solid var(--color-gray-700);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  text-align: center;
+}
+
+.admin-tab.active {
+  color: var(--color-white);
+  background: var(--color-gray-700);
+  border-color: var(--color-gold);
+}
+
+.admin-tab:hover:not(.active) {
+  color: var(--color-gray-300);
+  border-color: var(--color-gray-600);
+}
+
+/* Content */
+.admin-content {
+  padding: var(--space-md);
+}
+
+.scan-tab {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
+}
+
+.scanner-section,
+.search-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.scan-heading {
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  color: var(--color-gray-300);
+}
+
+/* No Events */
+.admin-no-events {
+  text-align: center;
+  padding: var(--space-3xl);
+  color: var(--color-gray-500);
+}
