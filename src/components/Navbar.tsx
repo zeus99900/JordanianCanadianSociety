@@ -1,8 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { createClient } from '@/lib/supabase/client';
 import './navbar.css';
 
 const navLinks = [
@@ -13,7 +14,31 @@ const navLinks = [
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [user, setUser] = useState<any>(null);
   const pathname = usePathname();
+
+  useEffect(() => {
+    const supabase = createClient();
+    
+    // Get initial session
+    supabase.auth.getUser().then(({ data: { user } }) => {
+      setUser(user);
+    });
+
+    // Listen for auth changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      (_event, session) => {
+        setUser(session?.user || null);
+      }
+    );
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  const handleLogout = async () => {
+    const supabase = createClient();
+    await supabase.auth.signOut();
+  };
 
   return (
     <header className="navbar glass" id="main-navbar">
@@ -39,6 +64,16 @@ export default function Navbar() {
               <span className="nav-link-underline" />
             </Link>
           ))}
+          {user ? (
+            <button onClick={handleLogout} className="nav-link" style={{ background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left', padding: '12px 16px' }}>
+              Logout
+            </button>
+          ) : (
+            <Link href="/auth/login" className="nav-link" onClick={() => setIsMenuOpen(false)}>
+              Login
+              <span className="nav-link-underline" />
+            </Link>
+          )}
         </nav>
 
         <button

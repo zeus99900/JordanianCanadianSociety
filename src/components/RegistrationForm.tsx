@@ -9,11 +9,12 @@ import './registration-form.css';
 
 interface RegistrationFormProps {
   event: Event;
+  hasActiveMembership?: boolean;
 }
 
 type PaymentMethod = 'stripe' | 'e_transfer' | 'cash_at_door';
 
-export default function RegistrationForm({ event }: RegistrationFormProps) {
+export default function RegistrationForm({ event, hasActiveMembership = false }: RegistrationFormProps) {
   const router = useRouter();
   const [leadName, setLeadName] = useState('');
   const [email, setEmail] = useState('');
@@ -31,14 +32,16 @@ export default function RegistrationForm({ event }: RegistrationFormProps) {
   const totalGuests = totalAdults + countKids;
 
   useEffect(() => {
-    // Pricing logic: Flat rate per registration (individual or family)
-    // If they have selected any guests, they pay the flat event price
-    if (totalGuests > 0) {
-      setTotalCents(event.price_adult_cents);
-    } else {
-      setTotalCents(0);
+    // Pricing logic: calculate total based on adult and kid count
+    let adultPriceCents = event.price_adult_cents;
+    
+    if (hasActiveMembership) {
+      adultPriceCents = Math.max(0, adultPriceCents - 500); // $5 discount
     }
-  }, [totalGuests, event.price_adult_cents]);
+
+    const total = (totalAdults * adultPriceCents) + (countKids * event.price_kid_cents);
+    setTotalCents(total);
+  }, [totalAdults, countKids, event.price_adult_cents, event.price_kid_cents, hasActiveMembership]);
 
   const totalDisplay = `$${(totalCents / 100).toFixed(2)} CAD`;
 

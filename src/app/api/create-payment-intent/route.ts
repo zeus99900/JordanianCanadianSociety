@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { stripe } from '@/lib/stripe';
 import { supabaseAdmin } from '@/lib/supabase-server';
+import { createClient } from '@/lib/supabase/server';
 
 export async function POST(req: NextRequest) {
   try {
@@ -26,10 +27,31 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Event not found' }, { status: 404 });
     }
 
-    // Calculate total
-    const adultCount = (countMen || 0) + (countWomen || 0);
-    const kidCount = countKids || 0;
-    const amount = (adultCount * event.price_adult_cents) + (kidCount * event.price_kid_cents);
+// Calculate total
+const adultCount = (countMen || 0) + (countWomen || 0);
+const kidCount = countKids || 0;
+
+let adultPriceCents = event.price_adult_cents;
+
+// Check for active membership
+const supabase = await createClient();
+const { data: { user } } = await supabase.auth.getUser();
+
+if (user) {
+  const { data: membership } = await supabaseAdmin
+    .from('memberships')
+    .select('id')
+    .eq('user_id', user.id)
+    .eq('status', 'active')
+    .single();
+
+  if (membership) {
+    // $5.00 discount per adult
+    adultPriceCents = Math.max(0, adultPriceCents - 500);
+  }
+}
+
+const amount = (adultCount * adultPriceCents) + (kidCount * event.price_kid_cents);
 
     if (amount <= 0) {
       return NextResponse.json({ error: 'Invalid amount' }, { status: 400 });

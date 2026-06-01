@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import { supabase } from '@/lib/supabase';
+import { createClient } from '@/lib/supabase/server';
 import RegistrationForm from '@/components/RegistrationForm';
 import type { Event } from '@/lib/types';
 import type { Metadata } from 'next';
@@ -34,6 +35,23 @@ export default async function EventDetailPage({ params }: PageProps) {
   const event = await getEvent(eventId);
 
   if (!event) notFound();
+
+  let hasActiveMembership = false;
+  const supabaseServer = await createClient();
+  const { data: { user } } = await supabaseServer.auth.getUser();
+
+  if (user) {
+    const { data: membership } = await supabaseServer
+      .from('memberships')
+      .select('id')
+      .eq('user_id', user.id)
+      .eq('status', 'active')
+      .single();
+    
+    if (membership) {
+      hasActiveMembership = true;
+    }
+  }
 
   const eventDate = new Date(event.event_date);
   const formattedDate = eventDate.toLocaleDateString('en-CA', {
@@ -118,7 +136,7 @@ export default async function EventDetailPage({ params }: PageProps) {
 
           {/* Right: Registration Form */}
           <div className="event-register" id="event-register">
-            <RegistrationForm event={event} />
+            <RegistrationForm event={event} hasActiveMembership={hasActiveMembership} />
           </div>
         </div>
       </section>

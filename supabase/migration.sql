@@ -113,3 +113,66 @@ VALUES (
     TRUE,
     'jcs.payments@example.com'
 );
+
+-- ============================================
+-- User Profiles (Maps to auth.users)
+-- ============================================
+CREATE TABLE user_profiles (
+    id UUID PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
+    created_at TIMESTAMPTZ DEFAULT NOW() NOT NULL,
+    full_name TEXT NOT NULL,
+    phone TEXT
+);
+
+-- Enable RLS
+ALTER TABLE user_profiles ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Users can read own profile"
+    ON user_profiles FOR SELECT
+    USING (auth.uid() = id);
+
+CREATE POLICY "Users can update own profile"
+    ON user_profiles FOR UPDATE
+    USING (auth.uid() = id);
+
+-- Trigger to create profile on signup
+CREATE OR REPLACE FUNCTION public.handle_new_user()
+RETURNS trigger AS $$
+BEGIN
+  INSERT INTO public.user_profiles (id, full_name)
+  VALUES (new.id, new.raw_user_meta_data->>'full_name');
+  RETURN new;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+CREATE OR REPLACE TRIGGER on_auth_user_created
+  AFTER INSERT ON auth.users
+  FOR EACH ROW EXECUTE PROCEDURE public.handle_new_user();
+
+-- ============================================
+-- Annual Memberships
+-- ============================================
+CREATE TABLE memberships (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    created_at TIMESTAMPTZ DEFAULT NOW() NOT NULL,
+    user_id UUID REFERENCES auth.users(id) NOT NULL,
+    status TEXT DEFAULT 'pending' NOT NULL, -- 'pending', 'active', 'expired'
+    expires_at TIMESTAMPTZ,
+    stripe_payment_id TEXT UNIQUE
+);
+
+-- Enable RLS
+ALTER TABLE memberships ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Users can read own memberships"
+    ON memberships FOR SELECT
+    USING (auth.uid() = user_id);
+
+CREATE POLICY "Service role full access to memberships"
+    ON memberships FOR ALL
+    USING (TRUE)
+    WITH CHECK (TRUE);
+
+-- Indexes
+CREATE INDEX idx_memberships_user ON memberships(user_id);
+CREATE INDEX idx_memberships_status ON memberships(status);
