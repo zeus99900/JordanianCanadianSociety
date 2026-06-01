@@ -43,6 +43,7 @@ export default function LoginPage() {
             data: {
               full_name: fullName,
             },
+            emailRedirectTo: `${location.origin}/auth/callback`,
           },
         });
 
