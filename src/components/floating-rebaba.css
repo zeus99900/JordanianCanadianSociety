@@ -1,7 +1,7 @@
 .floating-rebaba-widget {
   position: fixed;
-  bottom: 5px; /* Closer to the corner */
-  right: 10px; /* Closer to the corner */
+  bottom: -30px; /* Push down to touch bottom edge */
+  right: 0px;    /* Hug the right edge */
   z-index: 50;
   transition: transform 0.3s ease;
 }
