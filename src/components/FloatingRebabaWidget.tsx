@@ -48,46 +48,23 @@ export default function FloatingRebabaWidget() {
               <stop offset="50%" stopColor="#B8941F" />
               <stop offset="100%" stopColor="#96780F" />
             </linearGradient>
-            <linearGradient id="rebabaWood" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#5C3A21" />
-              <stop offset="50%" stopColor="#8B5A2B" />
-              <stop offset="100%" stopColor="#5C3A21" />
-            </linearGradient>
-            <linearGradient id="rebabaSkin" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#E6C89A" />
-              <stop offset="100%" stopColor="#C49A5A" />
-            </linearGradient>
           </defs>
 
-          {/* THE NECK (Wooden Rod) */}
-          <rect x="76" y="20" width="8" height="200" rx="4" fill="url(#rebabaWood)" />
-          {/* Top Decorative Peg/Head */}
-          <path d="M72 20 H88 L84 5 H76 Z" fill="#3A2110" />
-          <circle cx="80" cy="35" r="6" fill="#3A2110" />
-          {/* Tuning Peg */}
-          <rect x="60" y="45" width="20" height="6" rx="2" fill="#3A2110" />
-
-          {/* THE SKIN BODY (Square الطارة) */}
-          {/* Back skin layer shadow */}
-          <rect x="40" y="120" width="80" height="80" rx="8" fill="url(#rebabaSkin)" stroke="url(#rebabaWood)" strokeWidth="4" />
+          {/* THE NECK & SPIKE (Single elegant vertical line) */}
+          <line x1="80" y1="20" x2="80" y2="230" stroke="url(#rebabaGoldGrad)" strokeWidth="3" strokeLinecap="round" />
           
-          {/* Traditional Brass Tacks (Decorative dots around the frame) */}
-          <g fill="url(#rebabaGoldGrad)">
-            <circle cx="46" cy="126" r="2" />
-            <circle cx="60" cy="126" r="2" />
-            <circle cx="80" cy="126" r="2" />
-            <circle cx="100" cy="126" r="2" />
-            <circle cx="114" cy="126" r="2" />
-            <circle cx="46" cy="146" r="2" />
-            <circle cx="114" cy="146" r="2" />
-            <circle cx="46" cy="174" r="2" />
-            <circle cx="114" cy="174" r="2" />
-            <circle cx="46" cy="194" r="2" />
-            <circle cx="60" cy="194" r="2" />
-            <circle cx="80" cy="194" r="2" />
-            <circle cx="100" cy="194" r="2" />
-            <circle cx="114" cy="194" r="2" />
-          </g>
+          {/* Top Tuning Peg (Simple horizontal dash) */}
+          <line x1="65" y1="45" x2="95" y2="45" stroke="url(#rebabaGoldGrad)" strokeWidth="3" strokeLinecap="round" />
+
+          {/* THE BODY (Minimalist )_( curves) */}
+          {/* Left curve */}
+          <path d="M60 120 C 30 140, 30 180, 60 200" stroke="url(#rebabaGoldGrad)" strokeWidth="3" strokeLinecap="round" fill="none" />
+          {/* Right curve */}
+          <path d="M100 120 C 130 140, 130 180, 100 200" stroke="url(#rebabaGoldGrad)" strokeWidth="3" strokeLinecap="round" fill="none" />
+          {/* Top connecting line */}
+          <line x1="60" y1="120" x2="100" y2="120" stroke="url(#rebabaGoldGrad)" strokeWidth="3" strokeLinecap="round" />
+          {/* Bottom connecting line */}
+          <line x1="60" y1="200" x2="100" y2="200" stroke="url(#rebabaGoldGrad)" strokeWidth="3" strokeLinecap="round" />
 
           {/* THE SINGLE STRING (Vibrating) */}
           <motion.line
@@ -95,40 +72,39 @@ export default function FloatingRebabaWidget() {
             y1="45"
             x2="80"
             y2="210"
-            stroke="url(#rebabaGoldGrad)"
-            strokeWidth="2"
+            stroke="#ffffff"
+            strokeWidth="1.5"
             variants={stringVariants}
             animate="animate"
+            style={{ opacity: 0.8 }}
           />
 
           {/* THE ANIMATED BOW (القوس) */}
           <motion.g
             variants={bowVariants}
             animate="animate"
-            style={{ originX: "60px", originY: "150px" }}
+            style={{ originX: "80px", originY: "160px" }}
           >
             {/* The Curved Wood Stick */}
             <path
-              d="M30 110 C 25 150, 45 180, 85 195"
-              stroke="url(#rebabaWood)"
-              strokeWidth="5"
+              d="M30 140 C 30 160, 50 190, 130 180"
+              stroke="url(#rebabaGoldGrad)"
+              strokeWidth="2"
               strokeLinecap="round"
               fill="none"
             />
             {/* The Bow Horsehair String */}
             <line
-              x1="32"
-              y1="112"
-              x2="83"
-              y2="192"
-              stroke="#F5F5DC"
-              strokeWidth="2"
+              x1="30"
+              y1="140"
+              x2="130"
+              y2="180"
+              stroke="#E8D48B"
+              strokeWidth="1.5"
               strokeLinecap="round"
+              style={{ opacity: 0.6 }}
             />
           </motion.g>
-          
-          {/* Bottom Spike/Foot */}
-          <rect x="77" y="220" width="6" height="15" rx="2" fill="#3A2110" />
         </svg>
       </div>
     </div>
