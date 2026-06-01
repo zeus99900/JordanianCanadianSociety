@@ -1,0 +1,32 @@
+.floating-coffee-widget {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 50;
+  transition: transform 0.3s ease;
+}
+
+.floating-coffee-widget:hover {
+  transform: scale(1.1);
+}
+
+.floating-widget-container {
+  background: rgba(20, 15, 10, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 12px;
+  border-radius: 50%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(200, 169, 81, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 70px;
+}
+
+.floating-widget-container svg {
+  width: 100%;
+  height: 100%;
+  transform: scale(1.3) translateX(-10px) translateY(-10px);
+}
