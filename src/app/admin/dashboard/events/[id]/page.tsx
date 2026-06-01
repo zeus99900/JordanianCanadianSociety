@@ -48,6 +48,27 @@ export default function EventDashboardPage({ params }: { params: Promise<{ id: s
     document.body.removeChild(link);
   };
 
+  const handleDelete = async (registrationId: string) => {
+    if (!window.confirm('Are you sure you want to permanently delete this registration?')) {
+      return;
+    }
+    
+    try {
+      const res = await fetch(`/api/admin/registrations/${registrationId}`, {
+        method: 'DELETE',
+      });
+      
+      if (res.ok) {
+        setRegistrations(registrations.filter(r => r.id !== registrationId));
+      } else {
+        alert('Failed to delete registration.');
+      }
+    } catch (err) {
+      console.error(err);
+      alert('Network error while deleting registration.');
+    }
+  };
+
   return (
     <div>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
@@ -79,12 +100,13 @@ export default function EventDashboardPage({ params }: { params: Promise<{ id: s
                 <th style={{ padding: '1rem' }}>Guests</th>
                 <th style={{ padding: '1rem' }}>Payment</th>
                 <th style={{ padding: '1rem' }}>Status</th>
+                <th style={{ padding: '1rem' }}>Actions</th>
               </tr>
             </thead>
             <tbody>
               {registrations.length === 0 ? (
                 <tr>
-                  <td colSpan={5} style={{ padding: '2rem', textAlign: 'center' }}>No registrations yet.</td>
+                  <td colSpan={6} style={{ padding: '2rem', textAlign: 'center' }}>No registrations yet.</td>
                 </tr>
               ) : (
                 registrations.map(reg => {
@@ -107,6 +129,26 @@ export default function EventDashboardPage({ params }: { params: Promise<{ id: s
                             {reg.is_checked_in ? 'Checked In' : 'Not Checked In'}
                           </span>
                         </div>
+                      </td>
+                      <td style={{ padding: '1rem' }}>
+                        <button
+                          onClick={() => handleDelete(reg.id)}
+                          style={{
+                            background: 'rgba(239,68,68,0.1)',
+                            color: 'var(--color-error)',
+                            border: '1px solid var(--color-error)',
+                            padding: '0.25rem 0.75rem',
+                            borderRadius: '0.5rem',
+                            cursor: 'pointer',
+                            fontSize: '0.8rem',
+                            fontWeight: 'bold',
+                            transition: 'background 0.2s',
+                          }}
+                          onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(239,68,68,0.2)'}
+                          onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(239,68,68,0.1)'}
+                        >
+                          Delete
+                        </button>
                       </td>
                     </tr>
                   );
