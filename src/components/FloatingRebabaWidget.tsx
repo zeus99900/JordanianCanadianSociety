@@ -61,11 +61,11 @@ export default function FloatingRebabaWidget() {
           {/* Small knob at end of peg */}
           <circle cx="62" cy="50" r="3" stroke="url(#rebabaGoldGrad)" strokeWidth="1.5" fill="none" />
 
-          {/* ===== THE BODY — )_( shape, fuller and rounder ===== */}
-          {/* Left curve — smooth C shape */}
-          <path d="M65 115 C 25 135, 25 195, 65 215" stroke="url(#rebabaGoldGrad)" strokeWidth="2.5" strokeLinecap="round" fill="none" />
-          {/* Right curve — smooth C shape */}
-          <path d="M95 115 C 135 135, 135 195, 95 215" stroke="url(#rebabaGoldGrad)" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+          {/* ===== THE BODY — )_( shape, curves bowing inward ===== */}
+          {/* Left side ) — curves inward to the right */}
+          <path d="M65 115 C 95 135, 95 195, 65 215" stroke="url(#rebabaGoldGrad)" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+          {/* Right side ( — curves inward to the left */}
+          <path d="M95 115 C 65 135, 65 195, 95 215" stroke="url(#rebabaGoldGrad)" strokeWidth="2.5" strokeLinecap="round" fill="none" />
           {/* Top edge connecting the curves */}
           <line x1="65" y1="115" x2="95" y2="115" stroke="url(#rebabaGoldGrad)" strokeWidth="2.5" strokeLinecap="round" />
           {/* Bottom edge connecting the curves */}
