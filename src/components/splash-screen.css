@@ -1,0 +1,204 @@
+/* ============================================
+   Splash Screen — Arabic Coffee Animation
+   ============================================ */
+
+.splash-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1a0e05 0%, #2d1810 40%, #1a0e05 100%);
+  transition: opacity 0.8s ease-out;
+}
+
+.splash-screen.splash-fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.splash-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.coffee-animation {
+  width: min(380px, 85vw);
+  height: auto;
+}
+
+/* ---- Dallah (pot) tilt animation ---- */
+.dallah-group {
+  transform-origin: 105px 180px;
+  animation: tiltPour 3s ease-in-out forwards;
+}
+
+@keyframes tiltPour {
+  0% {
+    transform: rotate(0deg) translate(0, 0);
+  }
+  20% {
+    transform: rotate(0deg) translate(0, 0);
+  }
+  50% {
+    transform: rotate(-35deg) translate(-10px, -15px);
+  }
+  80% {
+    transform: rotate(-35deg) translate(-10px, -15px);
+  }
+  100% {
+    transform: rotate(-5deg) translate(0, 0);
+  }
+}
+
+/* ---- Coffee stream animation ---- */
+.coffee-stream {
+  opacity: 0;
+  animation: showStream 3s ease-in-out forwards;
+}
+
+.stream-path {
+  stroke-dasharray: 300;
+  stroke-dashoffset: 300;
+  animation: pourStream 3s ease-in-out forwards;
+}
+
+.stream-path-highlight {
+  stroke-dasharray: 300;
+  stroke-dashoffset: 300;
+  animation: pourStream 3s 0.1s ease-in-out forwards;
+}
+
+@keyframes showStream {
+  0%, 25% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  95%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes pourStream {
+  0%, 25% {
+    stroke-dashoffset: 300;
+  }
+  70% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* ---- Coffee filling the cup ---- */
+.coffee-fill {
+  animation: fillCup 3s ease-in-out forwards;
+}
+
+@keyframes fillCup {
+  0%, 45% {
+    opacity: 0;
+    ry: 0;
+  }
+  70% {
+    opacity: 0.9;
+    ry: 5;
+  }
+  100% {
+    opacity: 0.95;
+    ry: 5;
+  }
+}
+
+/* ---- Finjal (cup) slight reaction ---- */
+.finjal-group {
+  animation: cupReact 3s ease-in-out forwards;
+}
+
+@keyframes cupReact {
+  0%, 40% {
+    transform: translateY(0);
+  }
+  55% {
+    transform: translateY(3px);
+  }
+  70% {
+    transform: translateY(0);
+  }
+}
+
+/* ---- Steam rising ---- */
+.steam-1, .steam-2, .steam-3 {
+  opacity: 0;
+  animation: steamRise 2s ease-out infinite;
+}
+
+.steam-1 {
+  animation-delay: 2.2s;
+}
+
+.steam-2 {
+  animation-delay: 2.5s;
+}
+
+.steam-3 {
+  animation-delay: 2.8s;
+}
+
+@keyframes steamRise {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  30% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-25px);
+  }
+}
+
+/* ---- Text ---- */
+.splash-text {
+  text-align: center;
+  animation: textFadeIn 1s 0.5s ease-out both;
+}
+
+.splash-title {
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  font-weight: 700;
+  color: #C8A951;
+  margin: 0;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 20px rgba(200, 169, 81, 0.4);
+}
+
+.splash-subtitle {
+  font-size: clamp(0.9rem, 3vw, 1.1rem);
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0.5rem 0 0 0;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+@keyframes textFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

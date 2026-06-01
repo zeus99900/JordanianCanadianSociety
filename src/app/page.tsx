@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { supabase } from '@/lib/supabase';
 import HeroBanner from '@/components/HeroBanner';
 import AnnouncementBanner from '@/components/AnnouncementBanner';
+import SplashWrapper from '@/components/SplashWrapper';
 import type { Event } from '@/lib/types';
 import './home.css';
 
@@ -21,6 +22,7 @@ export default async function HomePage() {
   const nextEvent = await getNextEvent();
 
   return (
+    <SplashWrapper>
     <div className="page-enter">
       {nextEvent && <AnnouncementBanner event={nextEvent} />}
       <HeroBanner />
@@ -122,5 +124,6 @@ export default async function HomePage() {
         </div>
       </section>
     </div>
+    </SplashWrapper>
   );
 }
