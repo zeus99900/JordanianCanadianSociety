@@ -38,7 +38,7 @@ export default function FloatingRebabaWidget() {
         <svg
           width="100%"
           height="100%"
-          viewBox="0 0 160 240"
+          viewBox="0 0 160 260"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -50,59 +50,72 @@ export default function FloatingRebabaWidget() {
             </linearGradient>
           </defs>
 
-          {/* THE NECK & SPIKE (Single elegant vertical line) */}
-          <line x1="80" y1="20" x2="80" y2="230" stroke="url(#rebabaGoldGrad)" strokeWidth="3" strokeLinecap="round" />
-          
-          {/* Top Tuning Peg (Simple horizontal dash) */}
-          <line x1="65" y1="45" x2="95" y2="45" stroke="url(#rebabaGoldGrad)" strokeWidth="3" strokeLinecap="round" />
+          {/* ===== ORNAMENTAL HEAD (small diamond knob) ===== */}
+          <path d="M80 8 L85 16 L80 24 L75 16 Z" stroke="url(#rebabaGoldGrad)" strokeWidth="2" fill="none" />
 
-          {/* THE BODY (Minimalist )_( curves) */}
-          {/* Left curve */}
-          <path d="M60 120 C 30 140, 30 180, 60 200" stroke="url(#rebabaGoldGrad)" strokeWidth="3" strokeLinecap="round" fill="none" />
-          {/* Right curve */}
-          <path d="M100 120 C 130 140, 130 180, 100 200" stroke="url(#rebabaGoldGrad)" strokeWidth="3" strokeLinecap="round" fill="none" />
-          {/* Top connecting line */}
-          <line x1="60" y1="120" x2="100" y2="120" stroke="url(#rebabaGoldGrad)" strokeWidth="3" strokeLinecap="round" />
-          {/* Bottom connecting line */}
-          <line x1="60" y1="200" x2="100" y2="200" stroke="url(#rebabaGoldGrad)" strokeWidth="3" strokeLinecap="round" />
+          {/* ===== THE NECK (thin vertical line from head to body) ===== */}
+          <line x1="80" y1="24" x2="80" y2="115" stroke="url(#rebabaGoldGrad)" strokeWidth="2.5" strokeLinecap="round" />
 
-          {/* THE SINGLE STRING (Vibrating) */}
+          {/* ===== TUNING PEG (horizontal bar near top) ===== */}
+          <line x1="62" y1="50" x2="98" y2="50" stroke="url(#rebabaGoldGrad)" strokeWidth="2.5" strokeLinecap="round" />
+          {/* Small knob at end of peg */}
+          <circle cx="62" cy="50" r="3" stroke="url(#rebabaGoldGrad)" strokeWidth="1.5" fill="none" />
+
+          {/* ===== THE BODY — )_( shape, fuller and rounder ===== */}
+          {/* Left curve — smooth C shape */}
+          <path d="M65 115 C 25 135, 25 195, 65 215" stroke="url(#rebabaGoldGrad)" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+          {/* Right curve — smooth C shape */}
+          <path d="M95 115 C 135 135, 135 195, 95 215" stroke="url(#rebabaGoldGrad)" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+          {/* Top edge connecting the curves */}
+          <line x1="65" y1="115" x2="95" y2="115" stroke="url(#rebabaGoldGrad)" strokeWidth="2.5" strokeLinecap="round" />
+          {/* Bottom edge connecting the curves */}
+          <line x1="65" y1="215" x2="95" y2="215" stroke="url(#rebabaGoldGrad)" strokeWidth="2.5" strokeLinecap="round" />
+
+          {/* ===== BRIDGE (small horizontal bar across body center) ===== */}
+          <line x1="72" y1="170" x2="88" y2="170" stroke="url(#rebabaGoldGrad)" strokeWidth="2" strokeLinecap="round" />
+
+          {/* ===== BOTTOM SPIKE (line extending below body) ===== */}
+          <line x1="80" y1="215" x2="80" y2="250" stroke="url(#rebabaGoldGrad)" strokeWidth="2.5" strokeLinecap="round" />
+          {/* Small foot */}
+          <line x1="73" y1="250" x2="87" y2="250" stroke="url(#rebabaGoldGrad)" strokeWidth="2" strokeLinecap="round" />
+
+          {/* ===== THE SINGLE STRING (vibrating, white) ===== */}
           <motion.line
             x1="80"
-            y1="45"
+            y1="50"
             x2="80"
-            y2="210"
+            y2="215"
             stroke="#ffffff"
-            strokeWidth="1.5"
+            strokeWidth="1"
             variants={stringVariants}
             animate="animate"
-            style={{ opacity: 0.8 }}
+            style={{ opacity: 0.7 }}
           />
 
-          {/* THE ANIMATED BOW (القوس) */}
+          {/* ===== THE ANIMATED BOW (القوس) ===== */}
           <motion.g
             variants={bowVariants}
             animate="animate"
-            style={{ originX: "80px", originY: "160px" }}
+            style={{ originX: "80px", originY: "165px" }}
           >
-            {/* The Curved Wood Stick */}
+            {/* Curved bow stick */}
             <path
-              d="M30 140 C 30 160, 50 190, 130 180"
+              d="M25 145 C 40 165, 70 185, 135 175"
               stroke="url(#rebabaGoldGrad)"
               strokeWidth="2"
               strokeLinecap="round"
               fill="none"
             />
-            {/* The Bow Horsehair String */}
+            {/* Bow horsehair (taut line) */}
             <line
-              x1="30"
-              y1="140"
-              x2="130"
-              y2="180"
+              x1="25"
+              y1="145"
+              x2="135"
+              y2="175"
               stroke="#E8D48B"
-              strokeWidth="1.5"
+              strokeWidth="1"
               strokeLinecap="round"
-              style={{ opacity: 0.6 }}
+              style={{ opacity: 0.5 }}
             />
           </motion.g>
         </svg>
