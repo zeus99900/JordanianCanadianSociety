@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { supabaseAdmin } from '@/lib/supabase-server';
+import { sendTicketEmail } from '@/lib/email';
+import type { Event, Registration } from '@/lib/types';
 
 // POST: Create a new registration
 export async function POST(req: NextRequest) {
@@ -37,7 +39,7 @@ export async function POST(req: NextRequest) {
     // Determine paid status based on payment method
     const isPaid = paymentMethod === 'stripe' && Boolean(stripeIntentId);
 
-    const { data, error } = await supabaseAdmin
+    const { data: registration, error } = await supabaseAdmin
       .from('event_registrations')
       .insert({
         event_id: eventId,
@@ -52,10 +54,10 @@ export async function POST(req: NextRequest) {
         stripe_intent_id: stripeIntentId || null,
         is_paid: isPaid,
       })
-      .select('id')
+      .select('*, events(*)')
       .single();
 
-    if (error) {
+    if (error || !registration) {
       console.error('Registration insert error:', error);
       return NextResponse.json(
         { error: 'Failed to create registration' },
@@ -63,7 +65,14 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    return NextResponse.json({ registrationId: data.id });
+    // Send confirmation email in the background (don't await it so we don't slow down the response)
+    if (registration.events) {
+      sendTicketEmail(registration as Registration, registration.events as Event).catch(err => {
+        console.error('Background email failed:', err);
+      });
+    }
+
+    return NextResponse.json({ registrationId: registration.id });
   } catch (err: unknown) {
     console.error('Registration error:', err);
     const message = err instanceof Error ? err.message : 'Internal server error';
