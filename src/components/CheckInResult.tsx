@@ -5,9 +5,10 @@ import type { CheckInResult } from '@/lib/types';
 interface CheckInResultDisplayProps {
   result: CheckInResult;
   onDismiss: () => void;
+  onForcePaid?: (registrationId: string) => void;
 }
 
-export default function CheckInResultDisplay({ result, onDismiss }: CheckInResultDisplayProps) {
+export default function CheckInResultDisplay({ result, onDismiss, onForcePaid }: CheckInResultDisplayProps) {
   const statusConfig = {
     success: {
       bg: 'var(--color-success)',
@@ -38,17 +39,19 @@ export default function CheckInResultDisplay({ result, onDismiss }: CheckInResul
 
   const config = statusConfig[result.status] || statusConfig.error;
 
-  // Auto-dismiss after 3 seconds
-  setTimeout(onDismiss, 3000);
+  // Auto-dismiss after 3 seconds, except for not_paid
+  if (result.status !== 'not_paid') {
+    setTimeout(onDismiss, 3000);
+  }
 
   const totalGuests = result.registration
-    ? result.registration.count_men + result.registration.count_women + result.registration.count_kids
+    ? (result.registration.count_men || 0) + (result.registration.count_women || 0) + (result.registration.count_kids || 0)
     : 0;
 
   return (
     <div
       className={`checkin-flash ${config.className}`}
-      onClick={onDismiss}
+      onClick={result.status !== 'not_paid' ? onDismiss : undefined}
       role="alert"
       style={{ '--flash-bg': config.bg } as React.CSSProperties}
     >
@@ -63,8 +66,36 @@ export default function CheckInResultDisplay({ result, onDismiss }: CheckInResul
             <p className="flash-guests">{totalGuests} guest{totalGuests !== 1 ? 's' : ''}</p>
           )}
         </div>
+        
+        {result.status === 'not_paid' && result.registration && onForcePaid && (
+          <div className="flash-actions" style={{ marginTop: '2rem' }}>
+            <button 
+              className="btn btn-outline" 
+              style={{ backgroundColor: 'white', color: 'black', border: 'none', padding: '1rem 2rem', fontSize: '1.2rem', fontWeight: 'bold' }}
+              onClick={(e) => {
+                e.stopPropagation();
+                onForcePaid(result.registration!.id);
+              }}
+            >
+              Mark as Paid & Check In
+            </button>
+            <button
+              className="btn"
+              style={{ color: 'white', textDecoration: 'underline', marginTop: '1rem' }}
+              onClick={(e) => {
+                e.stopPropagation();
+                onDismiss();
+              }}
+            >
+              Cancel
+            </button>
+          </div>
+        )}
       </div>
-      <p className="flash-dismiss">Tap to dismiss</p>
+      
+      {result.status !== 'not_paid' && (
+        <p className="flash-dismiss">Tap to dismiss</p>
+      )}
 
       <style>{`
         .checkin-flash {

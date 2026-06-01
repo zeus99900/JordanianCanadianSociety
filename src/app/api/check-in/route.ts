@@ -3,7 +3,7 @@ import { supabaseAdmin } from '@/lib/supabase-server';
 
 export async function POST(req: NextRequest) {
   try {
-    const { registrationId } = await req.json();
+    const { registrationId, forcePaid } = await req.json();
 
     if (!registrationId) {
       return NextResponse.json(
@@ -26,8 +26,17 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    // Handle Unpaid Status
+    if (!registration.is_paid && !forcePaid) {
+      return NextResponse.json({
+        status: 'not_paid',
+        message: `Unpaid Balance: $${(registration.amount_paid_cents / 100).toFixed(2)} CAD`,
+        registration,
+      });
+    }
+
     // Check if already checked in
-    if (registration.is_checked_in) {
+    if (registration.is_checked_in && registration.is_paid) {
       return NextResponse.json({
         status: 'already_checked_in',
         message: `${registration.lead_name} has already been checked in`,
@@ -35,12 +44,13 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    // Mark as checked in
+    // Mark as checked in (and paid if forcePaid was used)
     const { data: updated, error: updateError } = await supabaseAdmin
       .from('event_registrations')
       .update({
         is_checked_in: true,
         checked_in_at: new Date().toISOString(),
+        ...(forcePaid ? { is_paid: true } : {}),
       })
       .eq('id', registrationId)
       .select('*, events(title)')

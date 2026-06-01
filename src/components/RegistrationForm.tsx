@@ -31,10 +31,11 @@ export default function RegistrationForm({ event }: RegistrationFormProps) {
   const totalGuests = totalAdults + countKids;
 
   useEffect(() => {
+    // Pricing logic (Option A): $20 per adult, kids are free
     const adultTotal = totalAdults * event.price_adult_cents;
-    const kidTotal = countKids * event.price_kid_cents;
+    const kidTotal = countKids * event.price_kid_cents; // Usually 0
     setTotalCents(adultTotal + kidTotal);
-  }, [countMen, countWomen, countKids, event.price_adult_cents, event.price_kid_cents, totalAdults]);
+  }, [totalAdults, countKids, event.price_adult_cents, event.price_kid_cents]);
 
   const totalDisplay = `$${(totalCents / 100).toFixed(2)} CAD`;
 

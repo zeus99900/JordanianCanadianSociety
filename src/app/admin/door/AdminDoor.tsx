@@ -77,6 +77,23 @@ export default function AdminDoor() {
     setScannerActive(true);
   }, []);
 
+  const handleForcePaid = useCallback(async (registrationId: string) => {
+    try {
+      const res = await fetch('/api/check-in', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ registrationId, forcePaid: true }),
+      });
+      const data: CheckInResult = await res.json();
+      setCheckInResult(data);
+    } catch {
+      setCheckInResult({
+        status: 'error',
+        message: 'Failed to mark as paid. Please try again.',
+      });
+    }
+  }, []);
+
   // Password gate
   if (!isAuthenticated) {
     return (
@@ -132,6 +149,7 @@ export default function AdminDoor() {
         <CheckInResultDisplay
           result={checkInResult}
           onDismiss={dismissResult}
+          onForcePaid={handleForcePaid}
         />
       )}
 
