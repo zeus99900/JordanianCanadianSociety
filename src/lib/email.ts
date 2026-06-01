@@ -3,14 +3,12 @@ import QRCode from 'qrcode';
 import type { Registration, Event } from './types';
 
 // Configure the SMTP transport
-// Using Outlook/Hotmail settings
+// Using Gmail settings (much more reliable than Hotmail for app passwords)
 const transporter = nodemailer.createTransport({
-  host: 'smtp-mail.outlook.com',
-  port: 587,
-  secure: false, // true for 465, false for other ports
+  service: 'gmail',
   auth: {
     user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS, // This must be an App Password, not the regular account password
+    pass: process.env.SMTP_PASS, // This must be a Gmail App Password
   },
 });
 
