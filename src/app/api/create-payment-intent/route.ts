@@ -27,11 +27,10 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Event not found' }, { status: 404 });
     }
 
-// Calculate total
+// Calculate total based on flat rate (using adult price as the base registration fee)
+let amount = event.price_adult_cents;
 const adultCount = (countMen || 0) + (countWomen || 0);
 const kidCount = countKids || 0;
-
-let adultPriceCents = event.price_adult_cents;
 
 // Check for active membership
 const supabase = await createClient();
@@ -46,12 +45,10 @@ if (user) {
     .single();
 
   if (membership) {
-    // $5.00 discount per adult
-    adultPriceCents = Math.max(0, adultPriceCents - 500);
+    // $5.00 flat discount
+    amount = Math.max(0, amount - 500);
   }
 }
-
-const amount = (adultCount * adultPriceCents) + (kidCount * event.price_kid_cents);
 
     if (amount <= 0) {
       return NextResponse.json({ error: 'Invalid amount' }, { status: 400 });

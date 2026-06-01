@@ -32,16 +32,19 @@ export default function RegistrationForm({ event, hasActiveMembership = false }:
   const totalGuests = totalAdults + countKids;
 
   useEffect(() => {
-    // Pricing logic: calculate total based on adult and kid count
-    let adultPriceCents = event.price_adult_cents;
+    // Pricing logic: flat rate per registration, regardless of how many guests.
+    let basePriceCents = 0;
     
-    if (hasActiveMembership) {
-      adultPriceCents = Math.max(0, adultPriceCents - 500); // $5 discount
+    if (totalGuests > 0) {
+      basePriceCents = event.price_adult_cents; // Use adult price as the flat rate
+      
+      if (hasActiveMembership) {
+        basePriceCents = Math.max(0, basePriceCents - 500); // $5 flat discount
+      }
     }
 
-    const total = (totalAdults * adultPriceCents) + (countKids * event.price_kid_cents);
-    setTotalCents(total);
-  }, [totalAdults, countKids, event.price_adult_cents, event.price_kid_cents, hasActiveMembership]);
+    setTotalCents(basePriceCents);
+  }, [totalGuests, event.price_adult_cents, hasActiveMembership]);
 
   const totalDisplay = `$${(totalCents / 100).toFixed(2)} CAD`;
 
