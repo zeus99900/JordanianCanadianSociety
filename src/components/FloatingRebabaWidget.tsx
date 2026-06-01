@@ -63,13 +63,13 @@ export default function FloatingRebabaWidget() {
 
           {/* ===== THE BODY — )_( shape, curves bowing inward ===== */}
           {/* Left side ) — curves inward to the right */}
-          <path d="M65 115 C 95 135, 95 195, 65 215" stroke="url(#rebabaGoldGrad)" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+          <path d="M50 115 C 75 135, 75 195, 50 215" stroke="url(#rebabaGoldGrad)" strokeWidth="2.5" strokeLinecap="round" fill="none" />
           {/* Right side ( — curves inward to the left */}
-          <path d="M95 115 C 65 135, 65 195, 95 215" stroke="url(#rebabaGoldGrad)" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+          <path d="M110 115 C 85 135, 85 195, 110 215" stroke="url(#rebabaGoldGrad)" strokeWidth="2.5" strokeLinecap="round" fill="none" />
           {/* Top edge connecting the curves */}
-          <line x1="65" y1="115" x2="95" y2="115" stroke="url(#rebabaGoldGrad)" strokeWidth="2.5" strokeLinecap="round" />
+          <line x1="50" y1="115" x2="110" y2="115" stroke="url(#rebabaGoldGrad)" strokeWidth="2.5" strokeLinecap="round" />
           {/* Bottom edge connecting the curves */}
-          <line x1="65" y1="215" x2="95" y2="215" stroke="url(#rebabaGoldGrad)" strokeWidth="2.5" strokeLinecap="round" />
+          <line x1="50" y1="215" x2="110" y2="215" stroke="url(#rebabaGoldGrad)" strokeWidth="2.5" strokeLinecap="round" />
 
           {/* ===== BRIDGE (small horizontal bar across body center) ===== */}
           <line x1="72" y1="170" x2="88" y2="170" stroke="url(#rebabaGoldGrad)" strokeWidth="2" strokeLinecap="round" />
