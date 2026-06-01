@@ -143,21 +143,20 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
               <path d="M98,35 C98,30 100,26 100,23 C100,26 102,30 102,35" fill="url(#dallahBody)" stroke="#8B6914" strokeWidth="0.8" />
               <circle cx="100" cy="22" r="3" fill="url(#dallahBody)" stroke="#8B6914" strokeWidth="0.8" />
 
-              {/* SPOUT — on RIGHT side, triangular beak: thick at neck, thin at tip */}
+              {/* SPOUT — triangular beak: WIDE at base, thin at tip */}
               <path
-                d="M109,60 
-                   C115,55 125,45 135,35 
-                   C140,30 148,22 152,18 
-                   L150,15
-                   C144,20 136,28 130,34
-                   C122,42 114,50 109,55
+                d="M106,55 
+                   C118,45 132,32 145,20 
+                   L148,17
+                   L146,15
+                   C134,25 120,38 110,48
                    Z"
                 fill="url(#dallahBody)"
                 stroke="#8B6914"
                 strokeWidth="0.8"
               />
-              {/* Spout tip opening */}
-              <ellipse cx="151" cy="16.5" rx="1.5" ry="2" fill="url(#dallahDark)" transform="rotate(30 151 16.5)" />
+              {/* Spout tip */}
+              <ellipse cx="147" cy="16" rx="1.2" ry="1.8" fill="url(#dallahDark)" transform="rotate(30 147 16)" />
 
               {/* HANDLE — on LEFT side (opposite spout) */}
               <path
@@ -196,7 +195,7 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
           {/* ===== COFFEE STREAM (from spout tip on right, curving down to cup) ===== */}
           <g className="coffee-stream">
             <path
-              d="M152,17 C180,60 260,160 330,265"
+              d="M147,17 C175,55 255,155 330,265"
               fill="none"
               stroke="#3B1F0B"
               strokeWidth="5"
@@ -204,7 +203,7 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
               className="stream-path"
             />
             <path
-              d="M152,17 C180,60 260,160 330,265"
+              d="M147,17 C175,55 255,155 330,265"
               fill="none"
               stroke="#6B3A1F"
               strokeWidth="3"
@@ -212,7 +211,7 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
               className="stream-path-inner"
             />
             <path
-              d="M152,17 C180,60 260,160 330,265"
+              d="M147,17 C175,55 255,155 330,265"
               fill="none"
               stroke="#8B5E3C"
               strokeWidth="1"
