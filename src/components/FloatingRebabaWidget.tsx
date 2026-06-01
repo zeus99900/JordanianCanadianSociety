@@ -51,28 +51,26 @@ export default function FloatingRebabaWidget() {
           </defs>
 
           {/* ===== ORNAMENTAL HEAD (small diamond knob) ===== */}
-          <path d="M80 8 L85 16 L80 24 L75 16 Z" stroke="url(#rebabaGoldGrad)" strokeWidth="2" fill="none" />
+          <path d="M90 8 L95 16 L90 24 L85 16 Z" stroke="url(#rebabaGoldGrad)" strokeWidth="2" fill="none" />
 
-          {/* ===== THE NECK (thin vertical line from head to body) ===== */}
-          <line x1="80" y1="24" x2="80" y2="115" stroke="url(#rebabaGoldGrad)" strokeWidth="2.5" strokeLinecap="round" />
+          {/* ===== THE NECK (thick vertical line offset to the right) ===== */}
+          <line x1="90" y1="24" x2="90" y2="140" stroke="url(#rebabaGoldGrad)" strokeWidth="4" strokeLinecap="round" />
 
-          {/* ===== TUNING PEG (horizontal bar near top) ===== */}
-          <line x1="62" y1="50" x2="98" y2="50" stroke="url(#rebabaGoldGrad)" strokeWidth="2.5" strokeLinecap="round" />
+          {/* ===== TUNING PEG (horizontal bar connecting string to neck) ===== */}
+          <line x1="62" y1="50" x2="90" y2="50" stroke="url(#rebabaGoldGrad)" strokeWidth="3" strokeLinecap="round" />
           {/* Small knob at end of peg */}
           <circle cx="62" cy="50" r="3" stroke="url(#rebabaGoldGrad)" strokeWidth="1.5" fill="none" />
 
-          {/* ===== THE BODY — )_( shape, curves bowing inward ===== */}
-          {/* Left side ) — curves inward to the right */}
+          {/* ===== THE BODY — )_( shape with crossing bars ===== */}
+          {/* Left side ) */}
           <path d="M50 115 C 75 135, 75 195, 50 215" stroke="url(#rebabaGoldGrad)" strokeWidth="2.5" strokeLinecap="round" fill="none" />
-          {/* Right side ( — curves inward to the left */}
+          {/* Right side ( */}
           <path d="M110 115 C 85 135, 85 195, 110 215" stroke="url(#rebabaGoldGrad)" strokeWidth="2.5" strokeLinecap="round" fill="none" />
-          {/* Top edge connecting the curves */}
-          <line x1="50" y1="115" x2="110" y2="115" stroke="url(#rebabaGoldGrad)" strokeWidth="2.5" strokeLinecap="round" />
-          {/* Bottom edge connecting the curves */}
-          <line x1="50" y1="215" x2="110" y2="215" stroke="url(#rebabaGoldGrad)" strokeWidth="2.5" strokeLinecap="round" />
-
-          {/* ===== BRIDGE (small horizontal bar across body center) ===== */}
-          <line x1="72" y1="170" x2="88" y2="170" stroke="url(#rebabaGoldGrad)" strokeWidth="2" strokeLinecap="round" />
+          
+          {/* Top cross bar */}
+          <line x1="35" y1="140" x2="125" y2="140" stroke="url(#rebabaGoldGrad)" strokeWidth="3" strokeLinecap="round" />
+          {/* Bottom cross bar */}
+          <line x1="35" y1="190" x2="125" y2="190" stroke="url(#rebabaGoldGrad)" strokeWidth="3" strokeLinecap="round" />
 
           {/* ===== BOTTOM SPIKE (line extending below body) ===== */}
           <line x1="80" y1="215" x2="80" y2="250" stroke="url(#rebabaGoldGrad)" strokeWidth="2.5" strokeLinecap="round" />
