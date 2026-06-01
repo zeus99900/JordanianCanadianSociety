@@ -1,7 +1,7 @@
 .floating-rebaba-widget {
   position: fixed;
   bottom: 24px;
-  left: 24px; /* Placed in bottom left corner */
+  right: 24px; /* Placed in bottom right corner instead of left */
   z-index: 50;
   transition: transform 0.3s ease;
 }
@@ -11,18 +11,13 @@
 }
 
 .floating-rebaba-container {
-  background: rgba(20, 15, 10, 0.85);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  padding: 12px;
-  border-radius: 16px; /* slightly rectangular since it's a taller instrument */
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(200, 169, 81, 0.3);
+  /* Removed frosted glass background/border/shadow */
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 70px;
-  height: 100px; /* taller than the dallah widget */
+  width: 140px;  /* 2x bigger (was 70px) */
+  height: 200px; /* 2x bigger (was 100px) */
 }
 
 .floating-rebaba-container svg {

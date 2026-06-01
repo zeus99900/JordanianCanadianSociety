@@ -12,7 +12,7 @@ export default function FloatingRebabaWidget() {
       x: [-15, 20, -15],       // Slides the bow across the string
       y: [0, -5, 0],           // Slight natural vertical movement
       transition: {
-        duration: 2,           // Speed of the bowing stroke
+        duration: 4,           // Speed of the bowing stroke (slower)
         ease: "easeInOut",
         repeat: Infinity,
       }
