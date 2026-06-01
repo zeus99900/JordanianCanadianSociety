@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import './splash-screen.css';
 
 interface SplashScreenProps {
@@ -22,7 +22,7 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
   }, [onComplete]);
 
   // Animation variants for the Teapot tilting
-  const teapotVariants = {
+  const teapotVariants: Variants = {
     animate: {
       rotate: [0, 35, 35, 0], // Tilts to pour (positive for right-side), holds, then stands back up
       x: [0, 10, 10, 0],      // Slight forward movement
@@ -36,7 +36,7 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
   };
 
   // Animation variants for the pouring liquid stream
-  const streamVariants = {
+  const streamVariants: Variants = {
     animate: {
       pathLength: [0, 0, 1, 1, 0], // Appears only when tilted, fills, then drains
       opacity: [0, 1, 1, 1, 0],
@@ -50,7 +50,7 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
   };
 
   // Cup slight reaction
-  const cupVariants = {
+  const cupVariants: Variants = {
     animate: {
       y: [0, 0, 4, 0, 0],
       transition: {
