@@ -476,36 +476,10 @@ h1, h2, h3, h4, h5, h6 {
   content: '';
   position: absolute;
   inset: 0;
-  opacity: 0.04;
-  background-image:
-    repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 40px,
-      var(--color-crimson) 40px,
-      var(--color-crimson) 41px
-    ),
-    repeating-linear-gradient(
-      90deg,
-      transparent,
-      transparent 40px,
-      var(--color-crimson) 40px,
-      var(--color-crimson) 41px
-    ),
-    repeating-linear-gradient(
-      45deg,
-      transparent,
-      transparent 28px,
-      var(--color-gold) 28px,
-      var(--color-gold) 29px
-    ),
-    repeating-linear-gradient(
-      -45deg,
-      transparent,
-      transparent 28px,
-      var(--color-gold) 28px,
-      var(--color-gold) 29px
-    );
+  opacity: 0.05;
+  background-image: url('/images/jordan-star.svg');
+  background-size: 120px 120px;
+  background-position: center;
   pointer-events: none;
   z-index: 0;
 }
