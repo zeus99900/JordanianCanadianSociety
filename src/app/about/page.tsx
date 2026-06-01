@@ -3,7 +3,7 @@ import './about.css';
 
 export const metadata: Metadata = {
   title: 'About Us',
-  description: 'Learn about the Jordanian Canadian Society — our mission, history, and the people who make our community thrive.',
+  description: 'Learn about the Jordanian Canadian Nashama Society — our mission, history, and the people who make our community thrive.',
 };
 
 export default function AboutPage() {
@@ -28,7 +28,7 @@ export default function AboutPage() {
               <p className="mission-arabic text-arabic-display">مهمتنا</p>
               <h2 className="section-title">Our Mission</h2>
               <p className="mission-text">
-                The Jordanian Canadian Society (JCS) is a community-driven organization
+                The Jordanian Canadian Nashama Society (JCNS) is a community-driven organization
                 dedicated to preserving and sharing the rich cultural heritage of Jordan
                 while fostering meaningful connections within the Canadian multicultural landscape.
               </p>

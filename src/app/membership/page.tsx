@@ -24,7 +24,7 @@ export default async function MembershipPage() {
       <div className="membership-hero">
         <h1 className="membership-title">Nashama Annual Membership</h1>
         <p className="membership-subtitle">
-          Join the Jordanian Canadian Society as an official member. Your contribution 
+          Join the Jordanian Canadian Nashama Society as an official member. Your contribution 
           supports our cultural events, community outreach, and helps preserve our 
           heritage in Halifax.
         </p>

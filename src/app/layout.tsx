@@ -26,22 +26,20 @@ const amiri = Amiri({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Jordanian Canadian Society',
-    template: '%s | Jordanian Canadian Society',
+    default: 'Jordanian Canadian Nashama Society',
+    template: '%s | Jordanian Canadian Nashama Society',
   },
-  description:
-    'Bridging Jordanian heritage with Canadian community. Events, cultural celebrations, and community connections in Halifax, Nova Scotia.',
+  description: 'Welcome to the official portal for the Jordanian Canadian Nashama Society. Bringing the community together in Halifax and beyond.',
   keywords: [
-    'Jordanian Canadian Society',
-    'JCS',
+    'Jordanian Canadian Nashama Society',
+    'Jordan',
+    'Canada',
     'Halifax',
-    'Nova Scotia',
-    'Jordanian community',
-    'cultural events',
-    'Arabic community Canada',
+    'Community',
+    'Events'
   ],
   openGraph: {
-    title: 'Jordanian Canadian Society',
+    title: 'Jordanian Canadian Nashama Society',
     description: 'Bridging cultures, building community, celebrating heritage',
     type: 'website',
     locale: 'en_CA',

@@ -14,15 +14,15 @@ export default function HeroBanner() {
           <span>Est. Halifax, Canada</span>
         </div>
 
-        <h1 className="hero-title animate-fade-in-up">
+        <h1 className="hero-title">
           Jordanian Canadian
-          <br />
-          <span className="hero-title-accent">Society</span>
+          <span className="hero-highlight">Nashama Society</span>
         </h1>
+        <h2 className="hero-arabic-title" style={{ color: 'var(--color-gold)', marginTop: '0.5rem', marginBottom: '1rem', fontSize: '1.5rem', fontWeight: 600 }}>
+          ملتقى النشامى للجالية الأردنية في كندا
+        </h2>
 
-        <p className="hero-arabic text-arabic-display animate-fade-in-up stagger-1">
-          الجمعية الأردنية الكندية
-        </p>
+
 
         <p className="hero-subtitle animate-fade-in-up stagger-2">
           Bridging cultures, building community, celebrating heritage

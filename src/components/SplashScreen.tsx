@@ -182,8 +182,8 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
 
         {/* Text */}
         <div className="splash-text">
-          <h1 className="splash-title">نشامى</h1>
-          <p className="splash-subtitle">Jordanian Canadian Society</p>
+          <h1 className="splash-title arabic">ملتقى النشامى للجالية الأردنية في كندا</h1>
+          <p className="splash-subtitle">Jordanian Canadian Nashama Society</p>
         </div>
       </div>
     </div>

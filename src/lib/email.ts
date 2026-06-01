@@ -47,7 +47,7 @@ export async function sendTicketEmail(registration: Registration, event: Event) 
     const htmlContent = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #1a1a1a; border: 1px solid #eaeaea; border-radius: 8px; overflow: hidden;">
         <div style="background-color: #B22234; padding: 30px 20px; text-align: center; color: white;">
-          <h1 style="margin: 0; font-size: 24px;">Jordanian Canadian Society</h1>
+          <h1 style="margin: 0; font-size: 24px;">Jordanian Canadian Nashama Society</h1>
           <p style="margin: 5px 0 0 0; opacity: 0.9; font-size: 16px;">Ticket Confirmation</p>
         </div>
         
@@ -86,7 +86,7 @@ export async function sendTicketEmail(registration: Registration, event: Event) 
     `;
 
     await transporter.sendMail({
-      from: `"Jordanian Canadian Society" <${process.env.SMTP_USER}>`,
+      from: `"Jordanian Canadian Nashama Society" <${process.env.SMTP_USER}>`,
       to: registration.email,
       subject: `Your Tickets: ${event.title}`,
       html: htmlContent,

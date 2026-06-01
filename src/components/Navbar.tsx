@@ -46,8 +46,9 @@ export default function Navbar() {
         <Link href="/" className="navbar-logo" id="logo-link">
           <span className="logo-icon">✦</span>
           <div className="logo-text">
-            <span className="logo-title">JCS</span>
-            <span className="logo-subtitle">Jordanian Canadian Society</span>
+            <span className="logo-title" style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>Nashama Society</span>
+            <span className="logo-subtitle" style={{ fontSize: '0.8rem', opacity: 0.8 }}>Jordanian Canadian Nashama Society</span>
+            <span className="logo-subtitle arabic" style={{ fontSize: '0.8rem', opacity: 0.8, marginTop: '2px' }} dir="rtl">ملتقى النشامى للجالية الأردنية في كندا</span>
           </div>
         </Link>
 

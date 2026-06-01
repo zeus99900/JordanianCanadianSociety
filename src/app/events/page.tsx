@@ -6,7 +6,7 @@ import './events.css';
 
 export const metadata: Metadata = {
   title: 'Events',
-  description: 'Browse and register for upcoming Jordanian Canadian Society events, celebrations, and community gatherings.',
+  description: 'Browse and register for upcoming Jordanian Canadian Nashama Society events, celebrations, and community gatherings.',
 };
 
 async function getEvents(): Promise<Event[]> {

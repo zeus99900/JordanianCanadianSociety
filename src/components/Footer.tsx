@@ -46,7 +46,7 @@ export default function Footer() {
         <div className="arabesque-divider" style={{ margin: 'var(--space-xl) 0' }} />
 
         <div className="footer-bottom">
-          <p>© {currentYear} Jordanian Canadian Society. All rights reserved.</p>
+          <p>© {currentYear} Jordanian Canadian Nashama Society. All rights reserved.</p>
           <p className="footer-tagline text-arabic">معاً نبني جسوراً بين الثقافات</p>
         </div>
       </div>
