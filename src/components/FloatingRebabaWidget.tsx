@@ -38,82 +38,116 @@ export default function FloatingRebabaWidget() {
         <svg
           width="100%"
           height="100%"
-          viewBox="0 0 160 260"
+          viewBox="0 0 160 300"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
           <defs>
-            <linearGradient id="rebabaGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#E8D48B" />
-              <stop offset="50%" stopColor="#B8941F" />
-              <stop offset="100%" stopColor="#96780F" />
+            {/* Rich textures for the real Rababa look */}
+            <linearGradient id="woodDark" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#3d2612" />
+              <stop offset="50%" stopColor="#5c3a1c" />
+              <stop offset="100%" stopColor="#3d2612" />
+            </linearGradient>
+            
+            <linearGradient id="parchmentSkin" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#d6b987" />
+              <stop offset="50%" stopColor="#c39d5c" />
+              <stop offset="100%" stopColor="#a37b3b" />
+            </linearGradient>
+
+            <linearGradient id="brassTack" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#fff2cc" />
+              <stop offset="100%" stopColor="#b38600" />
             </linearGradient>
           </defs>
 
-          {/* ===== ORNAMENTAL HEAD (small diamond knob) ===== */}
-          <path d="M90 8 L95 16 L90 24 L85 16 Z" stroke="url(#rebabaGoldGrad)" strokeWidth="2" fill="none" />
+          {/* ===== THE NECK (Central Pole) ===== */}
+          {/* Main rod */}
+          <rect x="76" y="20" width="8" height="230" rx="4" fill="url(#woodDark)" />
+          {/* Ornate turnings at the top */}
+          <ellipse cx="80" cy="20" rx="4" ry="8" fill="#3d2612" />
+          <rect x="74" y="30" width="12" height="10" rx="4" fill="url(#woodDark)" />
+          <rect x="75" y="45" width="10" height="15" rx="5" fill="url(#woodDark)" />
+          <rect x="74" y="65" width="12" height="8" rx="3" fill="url(#woodDark)" />
 
-          {/* ===== THE NECK (thick vertical line offset to the right) ===== */}
-          <line x1="90" y1="24" x2="90" y2="140" stroke="url(#rebabaGoldGrad)" strokeWidth="4" strokeLinecap="round" />
+          {/* ===== TUNING PEG (Right Side) ===== */}
+          {/* Peg sticking out to the right */}
+          <rect x="80" y="70" width="22" height="6" rx="3" fill="url(#woodDark)" transform="rotate(-10 80 70)" />
+          <circle cx="102" cy="66" r="4" fill="#3d2612" />
 
-          {/* ===== TUNING PEG (horizontal bar connecting string to neck) ===== */}
-          <line x1="62" y1="50" x2="90" y2="50" stroke="url(#rebabaGoldGrad)" strokeWidth="3" strokeLinecap="round" />
-          {/* Small knob at end of peg */}
-          <circle cx="62" cy="50" r="3" stroke="url(#rebabaGoldGrad)" strokeWidth="1.5" fill="none" />
+          {/* ===== THE FRAME (Side Horns) ===== */}
+          {/* Left wooden frame piece */}
+          <path d="M40 120 C 55 170, 55 210, 40 270" stroke="url(#woodDark)" strokeWidth="6" strokeLinecap="round" fill="none" />
+          {/* Right wooden frame piece */}
+          <path d="M120 120 C 105 170, 105 210, 120 270" stroke="url(#woodDark)" strokeWidth="6" strokeLinecap="round" fill="none" />
 
-          {/* ===== THE BODY — )_( shape with crossing bars ===== */}
-          {/* Left side ) */}
-          <path d="M50 115 C 75 135, 75 195, 50 215" stroke="url(#rebabaGoldGrad)" strokeWidth="2.5" strokeLinecap="round" fill="none" />
-          {/* Right side ( */}
-          <path d="M110 115 C 85 135, 85 195, 110 215" stroke="url(#rebabaGoldGrad)" strokeWidth="2.5" strokeLinecap="round" fill="none" />
-          
-          {/* Top cross bar */}
-          <line x1="35" y1="140" x2="125" y2="140" stroke="url(#rebabaGoldGrad)" strokeWidth="3" strokeLinecap="round" />
-          {/* Bottom cross bar */}
-          <line x1="35" y1="190" x2="125" y2="190" stroke="url(#rebabaGoldGrad)" strokeWidth="3" strokeLinecap="round" />
-
-          {/* ===== BOTTOM SPIKE (line extending below body) ===== */}
-          <line x1="80" y1="215" x2="80" y2="250" stroke="url(#rebabaGoldGrad)" strokeWidth="2.5" strokeLinecap="round" />
-          {/* Small foot */}
-          <line x1="73" y1="250" x2="87" y2="250" stroke="url(#rebabaGoldGrad)" strokeWidth="2" strokeLinecap="round" />
-
-          {/* ===== THE SINGLE STRING (vibrating, white) ===== */}
-          <motion.line
-            x1="80"
-            y1="50"
-            x2="80"
-            y2="215"
-            stroke="#ffffff"
-            strokeWidth="1"
-            variants={stringVariants}
-            animate="animate"
-            style={{ opacity: 0.7 }}
+          {/* ===== THE SKIN BODY (Parchment) ===== */}
+          {/* Stretched between the wooden side frames */}
+          <path 
+            d="M 49 145 L 111 145 C 104 170, 104 210, 111 245 L 49 245 C 56 210, 56 170, 49 145 Z" 
+            fill="url(#parchmentSkin)" 
+            stroke="#5c3a1c" 
+            strokeWidth="1.5" 
           />
 
-          {/* ===== THE ANIMATED BOW (القوس) ===== */}
+          {/* ===== BRASS TACKS ===== */}
+          {/* Top edge */}
+          <circle cx="55" cy="148" r="2.5" fill="url(#brassTack)" />
+          <circle cx="70" cy="148" r="2.5" fill="url(#brassTack)" />
+          <circle cx="85" cy="148" r="2.5" fill="url(#brassTack)" />
+          <circle cx="100" cy="148" r="2.5" fill="url(#brassTack)" />
+          {/* Bottom edge */}
+          <circle cx="55" cy="242" r="2.5" fill="url(#brassTack)" />
+          <circle cx="70" cy="242" r="2.5" fill="url(#brassTack)" />
+          <circle cx="85" cy="242" r="2.5" fill="url(#brassTack)" />
+          <circle cx="100" cy="242" r="2.5" fill="url(#brassTack)" />
+          {/* Left edge */}
+          <circle cx="52" cy="165" r="2.5" fill="url(#brassTack)" />
+          <circle cx="53.5" cy="185" r="2.5" fill="url(#brassTack)" />
+          <circle cx="54" cy="205" r="2.5" fill="url(#brassTack)" />
+          <circle cx="53.5" cy="225" r="2.5" fill="url(#brassTack)" />
+          {/* Right edge */}
+          <circle cx="108" cy="165" r="2.5" fill="url(#brassTack)" />
+          <circle cx="106.5" cy="185" r="2.5" fill="url(#brassTack)" />
+          <circle cx="106" cy="205" r="2.5" fill="url(#brassTack)" />
+          <circle cx="106.5" cy="225" r="2.5" fill="url(#brassTack)" />
+
+          {/* ===== THE SINGLE STRING (Black, taut) ===== */}
+          <motion.line
+            x1="80"
+            y1="70"
+            x2="80"
+            y2="250"
+            stroke="#1a1a1a"
+            strokeWidth="2"
+            variants={stringVariants}
+            animate="animate"
+          />
+
+          {/* ===== THE ANIMATED BOW ===== */}
           <motion.g
             variants={bowVariants}
             animate="animate"
-            style={{ originX: "80px", originY: "165px" }}
+            style={{ originX: "80px", originY: "190px" }}
           >
-            {/* Curved bow stick */}
+            {/* The Bow Wood (Curved strongly) */}
             <path
-              d="M25 145 C 40 165, 70 185, 135 175"
-              stroke="url(#rebabaGoldGrad)"
-              strokeWidth="2"
+              d="M30 160 C 80 180, 140 220, 100 270"
+              stroke="#a37b3b"
+              strokeWidth="4"
               strokeLinecap="round"
               fill="none"
             />
-            {/* Bow horsehair (taut line) */}
+            {/* The Horsehair String */}
             <line
-              x1="25"
-              y1="145"
-              x2="135"
-              y2="175"
-              stroke="#E8D48B"
-              strokeWidth="1"
+              x1="30"
+              y1="160"
+              x2="100"
+              y2="270"
+              stroke="#f4e8c1"
+              strokeWidth="2.5"
               strokeLinecap="round"
-              style={{ opacity: 0.5 }}
             />
           </motion.g>
         </svg>
