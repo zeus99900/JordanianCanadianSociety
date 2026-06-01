@@ -7,7 +7,7 @@ interface TicketCounterProps {
   emoji: string;
   count: number;
   onChange: (count: number) => void;
-  pricePerTicket: number; // in cents
+  pricePerTicket?: number; // in cents, now optional
   min?: number;
   max?: number;
 }
@@ -29,9 +29,11 @@ export default function TicketCounter({
     if (count < max) onChange(count + 1);
   };
 
-  const priceDisplay = pricePerTicket === 0
-    ? 'Free'
-    : `$${(pricePerTicket / 100).toFixed(2)} each`;
+  const priceDisplay = pricePerTicket === undefined 
+    ? null 
+    : pricePerTicket === 0
+      ? 'Free'
+      : `$${(pricePerTicket / 100).toFixed(2)} each`;
 
   return (
     <div className="ticket-counter" id={`ticket-${label.toLowerCase()}`}>
@@ -39,7 +41,7 @@ export default function TicketCounter({
         <span className="ticket-emoji">{emoji}</span>
         <div className="ticket-labels">
           <span className="ticket-label">{label}</span>
-          <span className="ticket-price">{priceDisplay}</span>
+          {priceDisplay && <span className="ticket-price">{priceDisplay}</span>}
         </div>
       </div>
 

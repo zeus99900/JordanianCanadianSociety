@@ -92,24 +92,13 @@ export default async function EventDetailPage({ params }: PageProps) {
 
             <div className="event-info-grid">
               <div className="event-info-card">
-                <span className="event-info-icon">💰</span>
+                <span className="event-info-icon">🎟️</span>
                 <div>
-                  <span className="event-info-label">Adult Ticket</span>
+                  <span className="event-info-label">Registration Fee</span>
                   <span className="event-info-value">
                     {event.price_adult_cents === 0
                       ? 'Free'
-                      : `$${(event.price_adult_cents / 100).toFixed(2)} CAD`}
-                  </span>
-                </div>
-              </div>
-              <div className="event-info-card">
-                <span className="event-info-icon">👧</span>
-                <div>
-                  <span className="event-info-label">Kids Ticket</span>
-                  <span className="event-info-value">
-                    {event.price_kid_cents === 0
-                      ? 'Free'
-                      : `$${(event.price_kid_cents / 100).toFixed(2)} CAD`}
+                      : `$${(event.price_adult_cents / 100).toFixed(2)} Flat Rate`}
                   </span>
                 </div>
               </div>

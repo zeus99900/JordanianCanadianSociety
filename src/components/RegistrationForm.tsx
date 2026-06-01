@@ -31,11 +31,14 @@ export default function RegistrationForm({ event }: RegistrationFormProps) {
   const totalGuests = totalAdults + countKids;
 
   useEffect(() => {
-    // Pricing logic (Option A): $20 per adult, kids are free
-    const adultTotal = totalAdults * event.price_adult_cents;
-    const kidTotal = countKids * event.price_kid_cents; // Usually 0
-    setTotalCents(adultTotal + kidTotal);
-  }, [totalAdults, countKids, event.price_adult_cents, event.price_kid_cents]);
+    // Pricing logic: Flat rate per registration (individual or family)
+    // If they have selected any guests, they pay the flat event price
+    if (totalGuests > 0) {
+      setTotalCents(event.price_adult_cents);
+    } else {
+      setTotalCents(0);
+    }
+  }, [totalGuests, event.price_adult_cents]);
 
   const totalDisplay = `$${(totalCents / 100).toFixed(2)} CAD`;
 
@@ -167,42 +170,39 @@ export default function RegistrationForm({ event }: RegistrationFormProps) {
         </div>
       </div>
 
-      {/* Tickets */}
+      {/* Attendees */}
       <div className="reg-section">
-        <h3 className="reg-section-title">Tickets</h3>
+        <h3 className="reg-section-title">Attendees Breakdown</h3>
+        <p className="reg-form-subtitle" style={{marginBottom: '1rem', marginTop: '-0.5rem', color: 'var(--color-gray-500)', fontSize: '0.9rem'}}>
+          Please let us know how many people are in your party for headcount purposes.
+        </p>
         <div className="ticket-list">
           <TicketCounter
             label="Men"
             emoji="👨"
             count={countMen}
             onChange={setCountMen}
-            pricePerTicket={event.price_adult_cents}
           />
           <TicketCounter
             label="Women"
             emoji="👩"
             count={countWomen}
             onChange={setCountWomen}
-            pricePerTicket={event.price_adult_cents}
           />
           <TicketCounter
             label="Kids"
             emoji="👧"
             count={countKids}
             onChange={setCountKids}
-            pricePerTicket={event.price_kid_cents}
           />
         </div>
 
         <div className="reg-total">
           <div className="total-breakdown">
-            <span>{totalGuests} guest{totalGuests !== 1 ? 's' : ''}</span>
-            {totalAdults > 0 && (
-              <span className="total-detail">{totalAdults} adult{totalAdults !== 1 ? 's' : ''}</span>
-            )}
-            {countKids > 0 && (
-              <span className="total-detail">{countKids} kid{countKids !== 1 ? 's' : ''}</span>
-            )}
+            <span>{totalGuests} guest{totalGuests !== 1 ? 's' : ''} total</span>
+            <span className="total-detail" style={{color: 'var(--color-gold-dark)', fontWeight: 500}}>
+              Registration Fee: {event.price_adult_cents === 0 ? 'Free' : `$${(event.price_adult_cents / 100).toFixed(2)} Flat Rate (Family/Individual)`}
+            </span>
           </div>
           <div className="total-amount">{totalDisplay}</div>
         </div>
