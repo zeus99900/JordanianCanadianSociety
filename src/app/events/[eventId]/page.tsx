@@ -42,10 +42,12 @@ export default async function EventDetailPage({ params }: PageProps) {
     day: 'numeric',
     year: 'numeric',
   });
-  const formattedTime = eventDate.toLocaleTimeString('en-CA', {
-    hour: 'numeric',
-    minute: '2-digit',
-  });
+  const formattedTime = event.title.toLowerCase().includes('80') || event.title.toLowerCase().includes('independence')
+    ? "4:30 PM - 8:00 PM"
+    : eventDate.toLocaleTimeString('en-CA', {
+        hour: 'numeric',
+        minute: '2-digit',
+      });
 
   return (
     <div className="page-enter">
