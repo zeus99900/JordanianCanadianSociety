@@ -3,6 +3,7 @@ import { Inter, Cairo, Amiri } from 'next/font/google';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import FloatingCoffeeWidget from '@/components/FloatingCoffeeWidget';
+import FloatingRebabaWidget from '@/components/FloatingRebabaWidget';
 import './globals.css';
 
 const inter = Inter({
@@ -60,6 +61,7 @@ export default function RootLayout({
         <main>{children}</main>
         <Footer />
         <FloatingCoffeeWidget />
+        <FloatingRebabaWidget />
       </body>
     </html>
   );
