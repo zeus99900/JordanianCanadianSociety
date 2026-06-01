@@ -1,7 +1,7 @@
 .floating-rebaba-widget {
   position: fixed;
-  bottom: 24px;
-  right: 24px; /* Placed in bottom right corner instead of left */
+  bottom: 5px; /* Closer to the corner */
+  right: 10px; /* Closer to the corner */
   z-index: 50;
   transition: transform 0.3s ease;
 }
@@ -16,8 +16,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 140px;  /* 2x bigger (was 70px) */
-  height: 200px; /* 2x bigger (was 100px) */
+  width: 90px;   /* Smaller size */
+  height: 160px; /* Smaller size */
+  transform: rotate(20deg); /* Lean on the corner */
+  transform-origin: bottom right; /* Anchor rotation to the bottom right */
 }
 
 .floating-rebaba-container svg {
