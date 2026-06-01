@@ -11,11 +11,8 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
   const [phase, setPhase] = useState<'pouring' | 'fading'>('pouring');
 
   useEffect(() => {
-    // Start fade out after the pouring animation
-    const fadeTimer = setTimeout(() => setPhase('fading'), 3200);
-    // Fully remove after fade
-    const removeTimer = setTimeout(() => onComplete(), 4000);
-
+    const fadeTimer = setTimeout(() => setPhase('fading'), 3400);
+    const removeTimer = setTimeout(() => onComplete(), 4200);
     return () => {
       clearTimeout(fadeTimer);
       clearTimeout(removeTimer);
@@ -26,163 +23,309 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
     <div className={`splash-screen ${phase === 'fading' ? 'splash-fade-out' : ''}`}>
       <div className="splash-content">
         <svg
-          viewBox="0 0 400 350"
+          viewBox="0 0 500 420"
           className="coffee-animation"
           xmlns="http://www.w3.org/2000/svg"
         >
-          {/* Left Hand holding the Dallah (coffee pot) */}
-          <g className="dallah-group">
-            {/* Left hand */}
+          <defs>
+            {/* Metallic gold gradient for the dallah */}
+            <linearGradient id="dallahBody" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#E8D48B" />
+              <stop offset="25%" stopColor="#C8A84E" />
+              <stop offset="50%" stopColor="#B8941F" />
+              <stop offset="75%" stopColor="#D4B85A" />
+              <stop offset="100%" stopColor="#96780F" />
+            </linearGradient>
+            <linearGradient id="dallahDark" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#A07D1C" />
+              <stop offset="50%" stopColor="#8B6914" />
+              <stop offset="100%" stopColor="#705510" />
+            </linearGradient>
+            <linearGradient id="finjalBody" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#E8D48B" />
+              <stop offset="30%" stopColor="#C8A84E" />
+              <stop offset="60%" stopColor="#B8941F" />
+              <stop offset="100%" stopColor="#D4B85A" />
+            </linearGradient>
+            <linearGradient id="coffeeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#5C3317" />
+              <stop offset="100%" stopColor="#3B1F0B" />
+            </linearGradient>
+            <linearGradient id="handGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#D4A574" />
+              <stop offset="50%" stopColor="#C69C6D" />
+              <stop offset="100%" stopColor="#B8895A" />
+            </linearGradient>
+            <linearGradient id="handGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#C69C6D" />
+              <stop offset="50%" stopColor="#B8895A" />
+              <stop offset="100%" stopColor="#A67B4B" />
+            </linearGradient>
+            {/* Shine effect */}
+            <linearGradient id="shine" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="rgba(255,255,255,0)" />
+              <stop offset="40%" stopColor="rgba(255,255,255,0.3)" />
+              <stop offset="60%" stopColor="rgba(255,255,255,0.3)" />
+              <stop offset="100%" stopColor="rgba(255,255,255,0)" />
+            </linearGradient>
+            {/* Shadow filter */}
+            <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="2" dy="4" stdDeviation="4" floodColor="#000" floodOpacity="0.3" />
+            </filter>
+            <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="1" dy="2" stdDeviation="3" floodColor="#000" floodOpacity="0.2" />
+            </filter>
+          </defs>
+
+          {/* ===== LEFT SIDE: Hand + Dallah ===== */}
+          <g className="dallah-group" filter="url(#shadow)">
+            {/* Left hand / arm */}
             <g className="left-hand">
+              {/* Forearm */}
               <path
-                d="M120,175 C115,170 105,168 100,172 C95,176 90,180 88,185 C86,190 85,195 88,198 C90,200 95,200 100,198 L105,195 L110,192 L115,188 L120,182 Z"
-                fill="#C69C6D"
+                d="M45,210 C50,200 60,190 75,185 C85,182 95,182 105,185 L118,192 L115,208 C108,215 95,218 82,218 C65,218 50,216 45,210 Z"
+                fill="url(#handGrad)"
+                stroke="#A67B4B"
+                strokeWidth="0.5"
               />
-              {/* Fingers wrapping */}
+              {/* Thumb */}
               <path
-                d="M88,185 C84,183 80,185 79,189 C78,193 80,196 84,197"
-                fill="none"
-                stroke="#B8895A"
-                strokeWidth="3"
-                strokeLinecap="round"
+                d="M105,185 C112,180 118,178 122,180 C126,183 126,188 123,192 L118,195"
+                fill="url(#handGrad)"
+                stroke="#A67B4B"
+                strokeWidth="0.5"
               />
+              {/* Finger creases */}
+              <path d="M75,200 C80,198 88,197 95,198" fill="none" stroke="#A67B4B" strokeWidth="0.5" opacity="0.5" />
+              <path d="M70,205 C78,203 88,202 98,204" fill="none" stroke="#A67B4B" strokeWidth="0.5" opacity="0.4" />
             </g>
 
-            {/* Dallah - Arabic coffee pot */}
+            {/* ---- DALLAH (Arabic Coffee Pot) ---- */}
             <g className="dallah">
-              {/* Body */}
+              {/* Main body - pear/bulbous shape */}
               <path
-                d="M95,130 C85,140 80,160 82,180 C83,190 90,195 100,198 C110,200 120,198 125,192 C130,185 132,170 128,155 C124,140 115,128 105,125 Z"
-                fill="url(#dallahGradient)"
+                d="M80,175 
+                   C72,165 68,150 70,135 
+                   C72,120 78,110 88,105 
+                   C92,103 96,102 100,102 
+                   C104,102 108,103 112,105 
+                   C122,110 128,120 130,135 
+                   C132,150 128,165 120,175 
+                   C116,180 112,183 108,185 
+                   C104,187 96,187 92,185 
+                   C88,183 84,180 80,175 Z"
+                fill="url(#dallahBody)"
                 stroke="#8B6914"
-                strokeWidth="1.5"
-              />
-              {/* Neck */}
-              <path
-                d="M100,125 C98,115 97,105 98,95 C99,90 102,88 105,88 C108,88 111,90 112,95 C113,105 112,115 110,125"
-                fill="url(#dallahGradient)"
-                stroke="#8B6914"
-                strokeWidth="1.5"
-              />
-              {/* Spout */}
-              <path
-                d="M98,95 C95,85 88,78 82,75 C80,74 78,75 78,77 C78,80 82,85 85,90"
-                fill="none"
-                stroke="#8B6914"
-                strokeWidth="3"
-                strokeLinecap="round"
-              />
-              {/* Lid / top knob */}
-              <circle cx="105" cy="85" r="4" fill="#A07D1C" stroke="#8B6914" strokeWidth="1" />
-              {/* Handle */}
-              <path
-                d="M125,140 C135,138 142,145 142,155 C142,165 135,172 125,170"
-                fill="none"
-                stroke="#8B6914"
-                strokeWidth="3.5"
-                strokeLinecap="round"
-              />
-              {/* Decorative band */}
-              <path
-                d="M86,160 C95,156 115,156 124,160"
-                fill="none"
-                stroke="#C8A951"
-                strokeWidth="2"
-              />
-              <path
-                d="M85,165 C95,161 115,161 125,165"
-                fill="none"
-                stroke="#C8A951"
                 strokeWidth="1"
               />
+              {/* Body shine */}
+              <path
+                d="M88,115 C90,110 96,107 100,107 C98,120 95,145 97,170"
+                fill="none"
+                stroke="rgba(255,255,255,0.25)"
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
+
+              {/* Neck - tall elegant cylinder */}
+              <path
+                d="M93,102 
+                   C92,95 91,85 91,75 
+                   C91,65 92,55 94,48 
+                   C96,43 98,40 100,38 
+                   C102,40 104,43 106,48 
+                   C108,55 109,65 109,75 
+                   C109,85 108,95 107,102"
+                fill="url(#dallahBody)"
+                stroke="#8B6914"
+                strokeWidth="1"
+              />
+              {/* Neck shine */}
+              <path
+                d="M97,50 L97,95"
+                fill="none"
+                stroke="rgba(255,255,255,0.2)"
+                strokeWidth="1.5"
+              />
+
+              {/* Lid / finial on top */}
+              <ellipse cx="100" cy="38" rx="8" ry="3" fill="url(#dallahDark)" stroke="#8B6914" strokeWidth="0.8" />
+              <path
+                d="M98,35 C98,30 100,26 100,23 C100,26 102,30 102,35"
+                fill="url(#dallahBody)"
+                stroke="#8B6914"
+                strokeWidth="0.8"
+              />
+              <circle cx="100" cy="22" r="3" fill="url(#dallahBody)" stroke="#8B6914" strokeWidth="0.8" />
+
+              {/* Long curved spout */}
+              <path
+                d="M91,65 
+                   C85,60 78,52 72,45 
+                   C66,38 60,30 56,24 
+                   C54,21 53,18 54,16 
+                   C55,14 57,14 59,15"
+                fill="none"
+                stroke="url(#dallahBody)"
+                strokeWidth="4"
+                strokeLinecap="round"
+              />
+              {/* Spout opening */}
+              <ellipse cx="56" cy="16" rx="3" ry="2" fill="url(#dallahDark)" transform="rotate(-30 56 16)" />
+
+              {/* Handle - tall curved at the back */}
+              <path
+                d="M109,70 
+                   C118,68 126,72 130,80 
+                   C134,88 134,100 132,110 
+                   C130,120 126,128 120,132 
+                   C116,134 113,132 112,128"
+                fill="none"
+                stroke="url(#dallahBody)"
+                strokeWidth="4.5"
+                strokeLinecap="round"
+              />
+              {/* Handle inner edge */}
+              <path
+                d="M110,73 
+                   C117,72 123,76 126,82 
+                   C129,88 129,98 128,108 
+                   C127,116 124,123 119,126"
+                fill="none"
+                stroke="#8B6914"
+                strokeWidth="0.5"
+              />
+
+              {/* Decorative bands */}
+              <path d="M76,145 C85,140 115,140 124,145" fill="none" stroke="#C8A951" strokeWidth="1.5" />
+              <path d="M74,150 C84,145 116,145 126,150" fill="none" stroke="#E8D48B" strokeWidth="0.8" />
+              <path d="M76,155 C85,150 115,150 124,155" fill="none" stroke="#C8A951" strokeWidth="1.5" />
+              
+              {/* Decorative band on neck */}
+              <path d="M93,80 C95,79 105,79 107,80" fill="none" stroke="#C8A951" strokeWidth="1.2" />
+              <path d="M93,83 C95,82 105,82 107,83" fill="none" stroke="#C8A951" strokeWidth="1.2" />
+
+              {/* Base */}
+              <ellipse cx="100" cy="186" rx="16" ry="4" fill="url(#dallahDark)" stroke="#8B6914" strokeWidth="0.8" />
             </g>
           </g>
 
-          {/* Coffee stream */}
+          {/* ===== COFFEE STREAM ===== */}
           <g className="coffee-stream">
             <path
-              d="M82,77 Q160,100 240,230"
+              d="M56,18 C80,50 200,120 320,265"
               fill="none"
-              stroke="#5C3D2E"
-              strokeWidth="4"
+              stroke="#3B1F0B"
+              strokeWidth="5"
               strokeLinecap="round"
               className="stream-path"
             />
             <path
-              d="M82,77 Q160,100 240,230"
+              d="M56,18 C80,50 200,120 320,265"
+              fill="none"
+              stroke="#6B3A1F"
+              strokeWidth="3"
+              strokeLinecap="round"
+              className="stream-path-inner"
+            />
+            <path
+              d="M56,18 C80,50 200,120 320,265"
               fill="none"
               stroke="#8B5E3C"
-              strokeWidth="2"
+              strokeWidth="1"
               strokeLinecap="round"
               className="stream-path-highlight"
             />
+            {/* Tiny splash drops at cup */}
+            <circle cx="315" cy="262" r="2" fill="#5C3317" className="drop drop-1" />
+            <circle cx="325" cy="258" r="1.5" fill="#5C3317" className="drop drop-2" />
+            <circle cx="320" cy="255" r="1" fill="#5C3317" className="drop drop-3" />
           </g>
 
-          {/* Right Hand holding the Finjal (cup) */}
-          <g className="finjal-group">
+          {/* ===== RIGHT SIDE: Hand + Finjal ===== */}
+          <g className="finjal-group" filter="url(#softShadow)">
             {/* Right hand */}
             <g className="right-hand">
+              {/* Palm and forearm */}
               <path
-                d="M260,250 C265,245 275,243 280,247 C285,251 290,255 292,260 C294,265 293,270 290,272 C288,274 283,274 278,272 L273,269 L268,266 L263,262 L260,256 Z"
-                fill="#C69C6D"
+                d="M355,310 C360,300 370,290 385,285 C395,282 405,282 415,285 L428,292 L425,310 C418,318 405,322 390,322 C375,322 360,318 355,310 Z"
+                fill="url(#handGrad2)"
+                stroke="#A67B4B"
+                strokeWidth="0.5"
               />
+              {/* Thumb */}
               <path
-                d="M292,260 C296,258 300,260 301,264 C302,268 300,271 296,272"
+                d="M355,310 C348,305 344,298 346,294 C348,290 352,289 356,292 L360,296"
+                fill="url(#handGrad2)"
+                stroke="#A67B4B"
+                strokeWidth="0.5"
+              />
+              {/* Finger lines */}
+              <path d="M380,302 C388,300 398,299 408,301" fill="none" stroke="#A67B4B" strokeWidth="0.5" opacity="0.4" />
+              <path d="M375,308 C385,305 398,304 410,307" fill="none" stroke="#A67B4B" strokeWidth="0.5" opacity="0.3" />
+            </g>
+
+            {/* ---- FINJAL (Small Arabic Coffee Cup) ---- */}
+            <g className="finjal">
+              {/* Cup body - distinctive flared top, narrow waist, wider bottom */}
+              <path
+                d="M295,270 
+                   C290,275 288,282 290,290 
+                   C291,295 294,300 300,305 
+                   C310,312 330,316 345,316 
+                   C360,316 375,312 382,305 
+                   C388,300 390,295 391,290 
+                   C393,282 391,275 386,270 
+                   Z"
+                fill="url(#finjalBody)"
+                stroke="#8B6914"
+                strokeWidth="1"
+              />
+              {/* Cup shine */}
+              <path
+                d="M310,275 C312,280 313,295 316,310"
                 fill="none"
-                stroke="#B8895A"
-                strokeWidth="3"
+                stroke="rgba(255,255,255,0.2)"
+                strokeWidth="2"
                 strokeLinecap="round"
               />
-            </g>
 
-            {/* Finjal - small Arabic coffee cup */}
-            <g className="finjal">
-              {/* Cup body */}
+              {/* Rim - elegant lip at top */}
+              <ellipse cx="340" cy="270" rx="46" ry="8" fill="url(#dallahBody)" stroke="#8B6914" strokeWidth="0.8" />
+              <ellipse cx="340" cy="270" rx="43" ry="6" fill="url(#dallahDark)" stroke="none" />
+              
+              {/* Coffee surface inside */}
+              <ellipse cx="340" cy="271" rx="40" ry="5" fill="url(#coffeeGrad)" opacity="0" className="coffee-fill" />
+
+              {/* Decorative band around middle */}
+              <path d="M292,288 C310,283 365,283 389,288" fill="none" stroke="#E8D48B" strokeWidth="1.2" />
+              <path d="M293,292 C310,287 365,287 388,292" fill="none" stroke="#C8A951" strokeWidth="0.8" />
+
+              {/* Small geometric pattern on band */}
+              <path d="M320,285 L325,290 L330,285 L335,290 L340,285 L345,290 L350,285 L355,290 L360,285" 
+                    fill="none" stroke="#E8D48B" strokeWidth="0.6" opacity="0.6" />
+
+              {/* Base / foot */}
+              <ellipse cx="340" cy="316" rx="20" ry="4" fill="url(#dallahDark)" stroke="#8B6914" strokeWidth="0.8" />
               <path
-                d="M225,235 C222,245 220,260 225,270 C228,275 240,280 255,280 C270,280 282,275 285,270 C290,260 288,245 285,235 Z"
-                fill="url(#finjalGradient)"
+                d="M325,316 C328,320 335,323 340,323 C345,323 352,320 355,316"
+                fill="url(#dallahDark)"
                 stroke="#8B6914"
-                strokeWidth="1.5"
+                strokeWidth="0.8"
               />
-              {/* Cup rim */}
-              <ellipse cx="255" cy="235" rx="30" ry="6" fill="#C8A951" stroke="#8B6914" strokeWidth="1" />
-              {/* Cup base */}
-              <ellipse cx="255" cy="280" rx="15" ry="3" fill="#A07D1C" stroke="#8B6914" strokeWidth="1" />
-              {/* Decorative pattern */}
-              <path
-                d="M228,255 C240,252 270,252 282,255"
-                fill="none"
-                stroke="#C8A951"
-                strokeWidth="1.5"
-              />
-              {/* Coffee inside */}
-              <ellipse cx="255" cy="238" rx="27" ry="5" fill="#5C3D2E" opacity="0" className="coffee-fill" />
+              <ellipse cx="340" cy="323" rx="10" ry="3" fill="url(#dallahBody)" stroke="#8B6914" strokeWidth="0.8" />
             </g>
           </g>
 
-          {/* Steam particles */}
+          {/* ===== STEAM ===== */}
           <g className="steam">
-            <path d="M245,225 Q240,210 245,195" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="1.5" className="steam-1" />
-            <path d="M255,222 Q260,205 255,190" fill="none" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" className="steam-2" />
-            <path d="M265,225 Q270,208 265,193" fill="none" stroke="rgba(255,255,255,0.35)" strokeWidth="1.5" className="steam-3" />
+            <path d="M325,260 Q318,240 325,220" fill="none" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" strokeLinecap="round" className="steam-1" />
+            <path d="M340,258 Q347,235 340,215" fill="none" stroke="rgba(255,255,255,0.25)" strokeWidth="1.5" strokeLinecap="round" className="steam-2" />
+            <path d="M355,260 Q362,238 355,218" fill="none" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" strokeLinecap="round" className="steam-3" />
           </g>
-
-          {/* Gradients */}
-          <defs>
-            <linearGradient id="dallahGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#D4AF37" />
-              <stop offset="50%" stopColor="#B8941F" />
-              <stop offset="100%" stopColor="#96780F" />
-            </linearGradient>
-            <linearGradient id="finjalGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#D4AF37" />
-              <stop offset="50%" stopColor="#C8A020" />
-              <stop offset="100%" stopColor="#A07D1C" />
-            </linearGradient>
-          </defs>
         </svg>
 
-        {/* Text below animation */}
+        {/* Text */}
         <div className="splash-text">
           <h1 className="splash-title">نشامى</h1>
           <p className="splash-subtitle">Jordanian Canadian Society</p>
