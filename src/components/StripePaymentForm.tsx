@@ -52,6 +52,7 @@ function PaymentFormInner({ clientSecret, onSuccess, onError, amount }: PaymentF
       <div className="stripe-card-wrapper">
         <CardElement
           options={{
+            hidePostalCode: true,
             style: {
               base: {
                 fontSize: '16px',
