@@ -35,7 +35,7 @@ export async function POST(req: NextRequest) {
     }
 
     // Determine paid status based on payment method
-    const isPaid = paymentMethod === 'stripe' && stripeIntentId;
+    const isPaid = paymentMethod === 'stripe' && Boolean(stripeIntentId);
 
     const { data, error } = await supabaseAdmin
       .from('event_registrations')
