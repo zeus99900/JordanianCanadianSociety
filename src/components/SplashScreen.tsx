@@ -81,28 +81,25 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
           <g className="dallah-group" filter="url(#shadow)">
             {/* Left hand / arm */}
             <g className="left-hand">
-              {/* Forearm */}
               <path
                 d="M45,210 C50,200 60,190 75,185 C85,182 95,182 105,185 L118,192 L115,208 C108,215 95,218 82,218 C65,218 50,216 45,210 Z"
                 fill="url(#handGrad)"
                 stroke="#A67B4B"
                 strokeWidth="0.5"
               />
-              {/* Thumb */}
               <path
                 d="M105,185 C112,180 118,178 122,180 C126,183 126,188 123,192 L118,195"
                 fill="url(#handGrad)"
                 stroke="#A67B4B"
                 strokeWidth="0.5"
               />
-              {/* Finger creases */}
               <path d="M75,200 C80,198 88,197 95,198" fill="none" stroke="#A67B4B" strokeWidth="0.5" opacity="0.5" />
               <path d="M70,205 C78,203 88,202 98,204" fill="none" stroke="#A67B4B" strokeWidth="0.5" opacity="0.4" />
             </g>
 
             {/* ---- DALLAH (Arabic Coffee Pot) ---- */}
             <g className="dallah">
-              {/* Main body - pear/bulbous shape */}
+              {/* Main body */}
               <path
                 d="M80,175 
                    C72,165 68,150 70,135 
@@ -118,7 +115,6 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
                 stroke="#8B6914"
                 strokeWidth="1"
               />
-              {/* Body shine */}
               <path
                 d="M88,115 C90,110 96,107 100,107 C98,120 95,145 97,170"
                 fill="none"
@@ -127,7 +123,7 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
                 strokeLinecap="round"
               />
 
-              {/* Neck - tall elegant cylinder */}
+              {/* Neck */}
               <path
                 d="M93,102 
                    C92,95 91,85 91,75 
@@ -140,57 +136,46 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
                 stroke="#8B6914"
                 strokeWidth="1"
               />
-              {/* Neck shine */}
-              <path
-                d="M97,50 L97,95"
-                fill="none"
-                stroke="rgba(255,255,255,0.2)"
-                strokeWidth="1.5"
-              />
+              <path d="M97,50 L97,95" fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="1.5" />
 
-              {/* Lid / finial on top */}
+              {/* Lid / finial */}
               <ellipse cx="100" cy="38" rx="8" ry="3" fill="url(#dallahDark)" stroke="#8B6914" strokeWidth="0.8" />
+              <path d="M98,35 C98,30 100,26 100,23 C100,26 102,30 102,35" fill="url(#dallahBody)" stroke="#8B6914" strokeWidth="0.8" />
+              <circle cx="100" cy="22" r="3" fill="url(#dallahBody)" stroke="#8B6914" strokeWidth="0.8" />
+
+              {/* SPOUT — on RIGHT side, triangular beak: thick at neck, thin at tip */}
               <path
-                d="M98,35 C98,30 100,26 100,23 C100,26 102,30 102,35"
+                d="M109,60 
+                   C115,55 125,45 135,35 
+                   C140,30 148,22 152,18 
+                   L150,15
+                   C144,20 136,28 130,34
+                   C122,42 114,50 109,55
+                   Z"
                 fill="url(#dallahBody)"
                 stroke="#8B6914"
                 strokeWidth="0.8"
               />
-              <circle cx="100" cy="22" r="3" fill="url(#dallahBody)" stroke="#8B6914" strokeWidth="0.8" />
+              {/* Spout tip opening */}
+              <ellipse cx="151" cy="16.5" rx="1.5" ry="2" fill="url(#dallahDark)" transform="rotate(30 151 16.5)" />
 
-              {/* Long curved spout */}
+              {/* HANDLE — on LEFT side (opposite spout) */}
               <path
-                d="M91,65 
-                   C85,60 78,52 72,45 
-                   C66,38 60,30 56,24 
-                   C54,21 53,18 54,16 
-                   C55,14 57,14 59,15"
-                fill="none"
-                stroke="url(#dallahBody)"
-                strokeWidth="4"
-                strokeLinecap="round"
-              />
-              {/* Spout opening */}
-              <ellipse cx="56" cy="16" rx="3" ry="2" fill="url(#dallahDark)" transform="rotate(-30 56 16)" />
-
-              {/* Handle - tall curved at the back */}
-              <path
-                d="M109,70 
-                   C118,68 126,72 130,80 
-                   C134,88 134,100 132,110 
-                   C130,120 126,128 120,132 
-                   C116,134 113,132 112,128"
+                d="M91,70 
+                   C82,68 74,72 70,80 
+                   C66,88 66,100 68,110 
+                   C70,120 74,128 80,132 
+                   C84,134 87,132 88,128"
                 fill="none"
                 stroke="url(#dallahBody)"
                 strokeWidth="4.5"
                 strokeLinecap="round"
               />
-              {/* Handle inner edge */}
               <path
-                d="M110,73 
-                   C117,72 123,76 126,82 
-                   C129,88 129,98 128,108 
-                   C127,116 124,123 119,126"
+                d="M90,73 
+                   C83,72 77,76 74,82 
+                   C71,88 71,98 72,108 
+                   C73,116 76,123 81,126"
                 fill="none"
                 stroke="#8B6914"
                 strokeWidth="0.5"
@@ -200,8 +185,6 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
               <path d="M76,145 C85,140 115,140 124,145" fill="none" stroke="#C8A951" strokeWidth="1.5" />
               <path d="M74,150 C84,145 116,145 126,150" fill="none" stroke="#E8D48B" strokeWidth="0.8" />
               <path d="M76,155 C85,150 115,150 124,155" fill="none" stroke="#C8A951" strokeWidth="1.5" />
-              
-              {/* Decorative band on neck */}
               <path d="M93,80 C95,79 105,79 107,80" fill="none" stroke="#C8A951" strokeWidth="1.2" />
               <path d="M93,83 C95,82 105,82 107,83" fill="none" stroke="#C8A951" strokeWidth="1.2" />
 
@@ -210,10 +193,10 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
             </g>
           </g>
 
-          {/* ===== COFFEE STREAM ===== */}
+          {/* ===== COFFEE STREAM (from spout tip on right, curving down to cup) ===== */}
           <g className="coffee-stream">
             <path
-              d="M56,18 C80,50 200,120 320,265"
+              d="M152,17 C180,60 260,160 330,265"
               fill="none"
               stroke="#3B1F0B"
               strokeWidth="5"
@@ -221,7 +204,7 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
               className="stream-path"
             />
             <path
-              d="M56,18 C80,50 200,120 320,265"
+              d="M152,17 C180,60 260,160 330,265"
               fill="none"
               stroke="#6B3A1F"
               strokeWidth="3"
@@ -229,17 +212,17 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
               className="stream-path-inner"
             />
             <path
-              d="M56,18 C80,50 200,120 320,265"
+              d="M152,17 C180,60 260,160 330,265"
               fill="none"
               stroke="#8B5E3C"
               strokeWidth="1"
               strokeLinecap="round"
               className="stream-path-highlight"
             />
-            {/* Tiny splash drops at cup */}
-            <circle cx="315" cy="262" r="2" fill="#5C3317" className="drop drop-1" />
-            <circle cx="325" cy="258" r="1.5" fill="#5C3317" className="drop drop-2" />
-            <circle cx="320" cy="255" r="1" fill="#5C3317" className="drop drop-3" />
+            {/* Splash drops at cup */}
+            <circle cx="325" cy="262" r="2" fill="#5C3317" className="drop drop-1" />
+            <circle cx="335" cy="258" r="1.5" fill="#5C3317" className="drop drop-2" />
+            <circle cx="330" cy="255" r="1" fill="#5C3317" className="drop drop-3" />
           </g>
 
           {/* ===== RIGHT SIDE: Hand + Finjal ===== */}
