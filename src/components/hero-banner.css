@@ -29,17 +29,18 @@
   left: 0;
   top: 0;
   bottom: 0;
-  width: 45%;
-  max-width: 800px;
-  background-color: var(--color-crimson);
+  width: 55%;
+  max-width: 900px;
+  background: linear-gradient(135deg, var(--color-crimson) 0%, rgba(178, 34, 52, 0.4) 100%);
   clip-path: polygon(0 0, 100% 50%, 0 100%);
   z-index: 1;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   padding-left: 8%;
-  opacity: 0.95;
-  box-shadow: 20px 0 50px rgba(0,0,0,0.5); /* Adds depth */
+  opacity: 0.85;
+  mask-image: linear-gradient(to right, black 20%, transparent 95%);
+  -webkit-mask-image: linear-gradient(to right, black 20%, transparent 95%);
 }
 
 .hero-flag-star {
