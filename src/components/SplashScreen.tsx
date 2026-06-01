@@ -99,6 +99,17 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
 
             {/* ---- DALLAH (Arabic Coffee Pot) ---- */}
             <g className="dallah">
+              {/* SPOUT — true dallah beak, wide base attaching to belly */}
+              <path
+                d="M125,120 Q170,80 180,25 L173,20 Q140,50 108,65 Z"
+                fill="url(#dallahBody)"
+                stroke="none"
+              />
+              <path d="M125,120 Q170,80 180,25" fill="none" stroke="#8B6914" strokeWidth="1" />
+              <path d="M173,20 Q140,50 108,65" fill="none" stroke="#8B6914" strokeWidth="1" />
+              {/* Spout tip */}
+              <ellipse cx="176.5" cy="22.5" rx="1.5" ry="4" fill="url(#dallahDark)" transform="rotate(35 176.5 22.5)" />
+
               {/* Main body */}
               <path
                 d="M80,175 
@@ -143,21 +154,6 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
               <path d="M98,35 C98,30 100,26 100,23 C100,26 102,30 102,35" fill="url(#dallahBody)" stroke="#8B6914" strokeWidth="0.8" />
               <circle cx="100" cy="22" r="3" fill="url(#dallahBody)" stroke="#8B6914" strokeWidth="0.8" />
 
-              {/* SPOUT — triangular beak: WIDE at base, thin at tip */}
-              <path
-                d="M106,55 
-                   C118,45 132,32 145,20 
-                   L148,17
-                   L146,15
-                   C134,25 120,38 110,48
-                   Z"
-                fill="url(#dallahBody)"
-                stroke="#8B6914"
-                strokeWidth="0.8"
-              />
-              {/* Spout tip */}
-              <ellipse cx="147" cy="16" rx="1.2" ry="1.8" fill="url(#dallahDark)" transform="rotate(30 147 16)" />
-
               {/* HANDLE — on LEFT side (opposite spout) */}
               <path
                 d="M91,70 
@@ -195,28 +191,31 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
           {/* ===== COFFEE STREAM (from spout tip on right, curving down to cup) ===== */}
           <g className="coffee-stream">
             <path
-              d="M147,17 C175,55 255,155 330,265"
+              d="M281,89 C290,140 310,200 330,260"
               fill="none"
               stroke="#3B1F0B"
               strokeWidth="5"
               strokeLinecap="round"
               className="stream-path"
+              pathLength="100"
             />
             <path
-              d="M147,17 C175,55 255,155 330,265"
+              d="M281,89 C290,140 310,200 330,260"
               fill="none"
               stroke="#6B3A1F"
               strokeWidth="3"
               strokeLinecap="round"
               className="stream-path-inner"
+              pathLength="100"
             />
             <path
-              d="M147,17 C175,55 255,155 330,265"
+              d="M281,89 C290,140 310,200 330,260"
               fill="none"
               stroke="#8B5E3C"
               strokeWidth="1"
               strokeLinecap="round"
               className="stream-path-highlight"
+              pathLength="100"
             />
             {/* Splash drops at cup */}
             <circle cx="325" cy="262" r="2" fill="#5C3317" className="drop drop-1" />
