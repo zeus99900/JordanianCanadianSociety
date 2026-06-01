@@ -65,11 +65,13 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Send confirmation email in the background (don't await it so we don't slow down the response)
+    // Send confirmation email (await it to ensure serverless functions don't terminate early)
     if (registration.events) {
-      sendTicketEmail(registration as Registration, registration.events as Event).catch(err => {
+      try {
+        await sendTicketEmail(registration as Registration, registration.events as Event);
+      } catch (err) {
         console.error('Background email failed:', err);
-      });
+      }
     }
 
     return NextResponse.json({ registrationId: registration.id });
