@@ -1,10 +1,26 @@
 'use client';
 
-import React from 'react';
+import React, { useRef } from 'react';
 import { motion, Variants } from 'framer-motion';
 import './floating-rebaba.css';
 
 export default function FloatingRebabaWidget() {
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  const handleMouseEnter = () => {
+    if (audioRef.current) {
+      audioRef.current.play().catch(e => console.error("Audio play failed:", e));
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (audioRef.current) {
+      audioRef.current.pause();
+      // Optional: reset to beginning when hover stops
+      // audioRef.current.currentTime = 0; 
+    }
+  };
+
   // Animation for the bow sliding horizontally back and forth
   const bowVariants: Variants = {
     animate: {
@@ -32,7 +48,15 @@ export default function FloatingRebabaWidget() {
   };
 
   return (
-    <div className="floating-rebaba-widget" aria-hidden="true">
+    <div 
+      className="floating-rebaba-widget" 
+      aria-hidden="true"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      {/* Hidden audio element */}
+      <audio ref={audioRef} loop src="/rababa-music.mp3" preload="auto" />
+      
       {/* Frosted glass container matching the Nashama theme */}
       <div className="floating-rebaba-container">
         <svg
