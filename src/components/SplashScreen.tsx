@@ -99,16 +99,16 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
 
             {/* ---- DALLAH (Arabic Coffee Pot) ---- */}
             <g className="dallah">
-              {/* SPOUT — true dallah beak, wide base attaching to belly */}
+              {/* SPOUT — elegant, slender, curved dallah beak */}
               <path
-                d="M125,120 Q170,80 180,25 L173,20 Q140,50 108,65 Z"
+                d="M128,120 C150,110 160,70 165,25 L160,22 C155,50 140,65 109,80 Z"
                 fill="url(#dallahBody)"
                 stroke="none"
               />
-              <path d="M125,120 Q170,80 180,25" fill="none" stroke="#8B6914" strokeWidth="1" />
-              <path d="M173,20 Q140,50 108,65" fill="none" stroke="#8B6914" strokeWidth="1" />
+              <path d="M128,120 C150,110 160,70 165,25" fill="none" stroke="#8B6914" strokeWidth="1" />
+              <path d="M160,22 C155,50 140,65 109,80" fill="none" stroke="#8B6914" strokeWidth="1" />
               {/* Spout tip */}
-              <ellipse cx="176.5" cy="22.5" rx="1.5" ry="4" fill="url(#dallahDark)" transform="rotate(35 176.5 22.5)" />
+              <ellipse cx="162.5" cy="23.5" rx="1.5" ry="3" fill="url(#dallahDark)" transform="rotate(35 162.5 23.5)" />
 
               {/* Main body */}
               <path
@@ -191,7 +191,7 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
           {/* ===== COFFEE STREAM (from spout tip on right, curving down to cup) ===== */}
           <g className="coffee-stream">
             <path
-              d="M281,89 C290,140 310,200 330,260"
+              d="M267,82 C280,140 305,200 330,260"
               fill="none"
               stroke="#3B1F0B"
               strokeWidth="5"
@@ -200,7 +200,7 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
               pathLength="100"
             />
             <path
-              d="M281,89 C290,140 310,200 330,260"
+              d="M267,82 C280,140 305,200 330,260"
               fill="none"
               stroke="#6B3A1F"
               strokeWidth="3"
@@ -209,7 +209,7 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
               pathLength="100"
             />
             <path
-              d="M281,89 C290,140 310,200 330,260"
+              d="M267,82 C280,140 305,200 330,260"
               fill="none"
               stroke="#8B5E3C"
               strokeWidth="1"
