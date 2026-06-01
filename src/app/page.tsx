@@ -84,6 +84,23 @@ export default async function HomePage() {
         </div>
       </section>
 
+      {/* Arabic Poetry Section */}
+      <section className="section poem-section" id="poem-section">
+        <div className="container">
+          <div className="poem-card">
+            <div className="poem-ornament">✦</div>
+            <div className="poem-lines">
+              <p className="poem-line">أُرْدُنُّ أَرْضُ العَزْمِ أُغْنِيَّةُ الظُّبَى</p>
+              <p className="poem-line">نَبَتِ السُّيُوفُ وَحَدُّ سَيْفِكَ مَا نَبَا</p>
+              <div className="poem-break" />
+              <p className="poem-line">فِي حَجْمِ بَعْضِ الْوَرْدِ إِلَّا أَنَّهُ</p>
+              <p className="poem-line">لَكَ شَوْكَةٌ رَدَّتْ إِلَى الشَّرْقِ الصِّبَا</p>
+            </div>
+            <div className="poem-ornament">✦</div>
+          </div>
+        </div>
+      </section>
+
       {/* Cultural Highlight Section */}
       <section className="section culture-section" id="culture-section">
         <div className="container">

@@ -50,6 +50,61 @@
   line-height: var(--leading-relaxed);
 }
 
+/* Poem Section */
+.poem-section {
+  background: linear-gradient(135deg, #1a1410 0%, #2a1f18 50%, #1a1410 100%);
+  padding: var(--space-3xl) var(--space-md);
+  overflow: hidden;
+  position: relative;
+}
+
+.poem-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(200, 169, 81, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.poem-card {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  position: relative;
+}
+
+.poem-ornament {
+  color: var(--color-gold);
+  font-size: 1.5rem;
+  opacity: 0.5;
+  letter-spacing: 1rem;
+}
+
+.poem-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.poem-line {
+  font-family: var(--font-amiri), serif;
+  font-size: clamp(1.3rem, 4vw, 1.9rem);
+  color: #E8D8B8;
+  direction: rtl;
+  line-height: 2;
+  margin: 0;
+  letter-spacing: 1px;
+  text-shadow: 0 1px 8px rgba(200, 169, 81, 0.15);
+}
+
+.poem-break {
+  height: 1rem;
+}
+
 /* Culture Section */
 .culture-section {
   background: var(--color-white);
